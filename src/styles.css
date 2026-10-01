@@ -1,0 +1,1047 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Aura v3 — premium, airy decision workspace */
+
+@theme inline {
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 18px;
+  --radius-2xl: 24px;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-brand: var(--brand);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-strong: var(--brand-strong);
+  --color-brand-foreground: var(--brand-foreground);
+
+  --font-body: "Lexend Variable", "Lexend", "Inter Variable", "Inter", system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-body);
+  --font-display: "Sora Variable", "Sora", "Inter Variable", "Inter", system-ui, -apple-system, sans-serif;
+  --font-executive: var(--font-display);
+
+  --shadow-soft:
+    0 1px 2px rgb(57 60 87 / 0.03), 0 10px 28px rgb(99 102 241 / 0.05);
+  --shadow-elevated:
+    0 8px 30px rgb(57 60 87 / 0.08), 0 2px 8px rgb(57 60 87 / 0.04);
+  --shadow-focus: 0 0 0 4px color-mix(in oklab, var(--brand) 12%, transparent);
+}
+
+:root {
+  /* Encre : touches noires qui donnent du caractère (boutons forts, filets). */
+  --aura-ink: #15121f;
+  /* Palette du site vitrine — bandeaux « futuristes » et verre. */
+  --aura-indigo: #4743e6;
+  --aura-indigo-300: #a5a3f5;
+  --aura-indigo-200: #c9c8fb;
+  --aura-indigo-50: #f1f0fe;
+  --aura-night: #0a0b1e;
+  --aura-navy: #151d52;
+  --aura-hero-bg: radial-gradient(120% 140% at 88% -30%, rgb(71 67 230 / .42), transparent 55%), linear-gradient(120deg, var(--aura-night) 0%, #12143a 55%, var(--aura-navy) 100%);
+  --aura-hero-grid: rgb(165 163 245 / .09);
+  --aura-hero-line: rgb(165 163 245 / .28);
+  /* Hauteur commune de la barre sombre du haut (menu, contenu, copilote). */
+  --aura-top-h: 76px;
+  --aura-glass-bg: rgb(255 255 255 / .72);
+  --aura-glass-border: rgb(71 67 230 / .14);
+  --aura-glass-shadow: 0 1px 0 rgb(255 255 255 / .8) inset, 0 10px 30px -18px rgb(21 29 82 / .35);
+  --aura-glass-shadow-hover: 0 1px 0 rgb(255 255 255 / .8) inset, 0 16px 36px -18px rgb(71 67 230 / .45);
+  --background: oklch(0.992 0.004 286);
+  --foreground: oklch(0.23 0.02 280);
+  --surface: oklch(0.982 0.006 286);
+  --surface-2: oklch(0.962 0.01 286);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.23 0.02 280);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.23 0.02 280);
+
+  --brand: oklch(0.61 0.22 292);
+  --brand-strong: oklch(0.52 0.2 289);
+  --brand-soft: oklch(0.968 0.022 292);
+  --brand-foreground: oklch(1 0 0);
+
+  --primary: var(--brand);
+  --primary-foreground: var(--brand-foreground);
+  --secondary: oklch(0.972 0.006 286);
+  --secondary-foreground: oklch(0.24 0.02 280);
+  --muted: oklch(0.972 0.006 286);
+  --muted-foreground: oklch(0.51 0.014 281);
+  --accent: var(--brand-soft);
+  --accent-foreground: var(--brand-strong);
+  --destructive: oklch(0.61 0.22 26);
+  --destructive-foreground: oklch(1 0 0);
+  --success: oklch(0.68 0.16 154);
+  --warning: oklch(0.77 0.16 76);
+  --border: oklch(0.92 0.01 286);
+  --input: oklch(0.92 0.01 286);
+  --ring: var(--brand);
+  --radius: 14px;
+
+  /* Échelle typographique Aura — six tailles, pas une septième.
+     t1/t2 : titres sobres comme Arbitrer. t3→t6 : texte, libellés, méta. */
+  --aura-t1: 23px; /* titre de page */
+  --aura-t2: 18px; /* titre de section */
+  --aura-t3: 16px; /* sous-titre, titre de carte */
+  --aura-t4: 15px; /* corps */
+  --aura-t5: 13.5px; /* corps secondaire, contrôles */
+  --aura-t6: 12px; /* méta, étiquettes capitales */
+
+  --sidebar: oklch(0.987 0.005 286);
+  --sidebar-foreground: oklch(0.23 0.02 280);
+  --sidebar-primary: oklch(0.23 0.02 280);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.958 0.014 292);
+  --sidebar-accent-foreground: oklch(0.29 0.04 289);
+  --sidebar-border: oklch(0.93 0.01 286);
+  --sidebar-ring: var(--brand);
+}
+
+.dark {
+  --background: oklch(0.17 0.01 280);
+  --foreground: oklch(0.97 0.004 286);
+  --surface: oklch(0.2 0.012 280);
+  --surface-2: oklch(0.24 0.014 280);
+  --card: oklch(0.2 0.012 280);
+  --card-foreground: oklch(0.97 0.004 286);
+  --popover: oklch(0.2 0.012 280);
+  --popover-foreground: oklch(0.97 0.004 286);
+  --primary: oklch(0.75 0.16 292);
+  --primary-foreground: oklch(0.17 0.01 280);
+  --secondary: oklch(0.24 0.014 280);
+  --secondary-foreground: oklch(0.97 0.004 286);
+  --muted: oklch(0.24 0.014 280);
+  --muted-foreground: oklch(0.74 0.01 280);
+  --accent: oklch(0.29 0.03 289);
+  --accent-foreground: oklch(0.97 0.004 286);
+  --destructive: oklch(0.64 0.22 26);
+  --destructive-foreground: oklch(0.98 0.004 286);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.75 0.16 292);
+  --sidebar: oklch(0.18 0.01 280);
+  --sidebar-foreground: oklch(0.97 0.004 286);
+  --sidebar-primary: oklch(0.97 0.004 286);
+  --sidebar-primary-foreground: oklch(0.17 0.01 280);
+  --sidebar-accent: oklch(0.26 0.02 289);
+  --sidebar-accent-foreground: oklch(0.97 0.004 286);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.75 0.16 292);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html,
+  body {
+    font-family: var(--font-sans);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    letter-spacing: 0.004em;
+    line-height: 1.55;
+  }
+  body {
+    background:
+      radial-gradient(
+        circle at top left,
+        color-mix(in oklab, var(--brand) 5%, transparent),
+        transparent 32%
+      ),
+      linear-gradient(180deg, var(--color-surface), var(--color-background) 18%);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    /* Scale typographique Desktop COMEX — clamp(min, pref-vw, max) */
+    font-size: clamp(15px, 0.95vw, 16.5px);
+  }
+  /* Sora (géométrique, légèrement futuriste) pour les grands titres ; Inter pour l'interface. */
+  h1,
+  h2 {
+    font-family: var(--font-display);
+    letter-spacing: -0.022em;
+    font-weight: 600;
+    font-feature-settings: "ss01" 0;
+  }
+  h3,
+  h4 {
+    font-family: var(--font-body);
+    letter-spacing: -0.01em;
+    font-weight: 650;
+  }
+
+  /* Hiérarchie typographique stricte — max 32px */
+  .text-decision-title {
+    font-family: var(--font-display);
+    font-size: clamp(22px, 1.8vw, 28px);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+  .text-panel-title {
+    font-family: var(--font-display);
+    font-size: clamp(16px, 1.1vw, 20px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+  .text-section-title {
+    font-family: var(--font-display);
+    font-size: clamp(14px, 0.95vw, 16.5px);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+  .text-body {
+    font-size: clamp(15px, 0.95vw, 16px);
+    line-height: 1.55;
+  }
+  .text-meta {
+    font-size: clamp(13px, 0.8vw, 14px);
+    color: var(--color-muted-foreground);
+  }
+  .text-label {
+    font-size: clamp(12px, 0.72vw, 13px);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+}
+
+@utility exec-label {
+  font-family: var(--font-executive);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+@utility exec-view {
+  font-family: var(--font-executive);
+}
+
+@utility surface-card {
+  background: color-mix(
+    in oklab,
+    var(--color-card) 92%,
+    var(--color-brand-soft) 8%
+  );
+  border: 1px solid
+    color-mix(in oklab, var(--color-border) 90%, var(--color-brand) 10%);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+@utility aura-shell-bg {
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--color-surface) 84%, white 16%),
+      var(--color-background) 18%
+    ),
+    radial-gradient(
+      circle at top right,
+      color-mix(in oklab, var(--color-brand) 6%, transparent),
+      transparent 28%
+    );
+}
+
+@utility aura-panel {
+  background: color-mix(
+    in oklab,
+    var(--color-card) 94%,
+    var(--color-brand-soft) 6%
+  );
+  border: 1px solid
+    color-mix(in oklab, var(--color-border) 88%, var(--color-brand) 12%);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-soft);
+}
+
+@utility aura-hero {
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklab, var(--color-brand-soft) 72%, white 28%),
+    var(--color-card) 58%,
+    color-mix(in oklab, var(--color-surface) 82%, white 18%)
+  );
+  border: 1px solid
+    color-mix(in oklab, var(--color-border) 82%, var(--color-brand) 18%);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-elevated);
+}
+
+@utility aura-kpi {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+@utility aura-sidebar-active {
+  background: color-mix(in oklab, var(--color-sidebar-accent) 86%, white 14%);
+  color: var(--color-sidebar-accent-foreground);
+  box-shadow: inset 0 0 0 1px
+    color-mix(in oklab, var(--color-brand) 16%, transparent);
+}
+
+/* ── Aura component tokens — bridge between inline styles and the design system ── */
+:root {
+  /* Semantic aliases used in workspace/architect components */
+  --bg-card: var(--color-card);
+  --bg-surface: var(--color-surface);
+  --bg-panel: color-mix(
+    in oklab,
+    var(--color-card) 94%,
+    var(--color-brand-soft) 6%
+  );
+  --accent: var(--brand);
+  --accent-soft: var(--brand-soft);
+  --accent-strong: var(--brand-strong);
+  --border: var(--color-border);
+
+  --text-primary: var(--color-foreground);
+  --text-secondary: var(--color-muted-foreground);
+  --text-muted: oklch(0.55 0.012 281);
+  --text-xmuted: oklch(0.68 0.008 281);
+
+  /* Semantic status colors */
+  --status-ok: oklch(0.65 0.16 154);
+  --status-warn: oklch(0.72 0.16 76);
+  --status-risk: oklch(0.61 0.22 26);
+  --status-info: oklch(0.61 0.2 222);
+
+  /* Spacing rhythm */
+  --gap-xs: 4px;
+  --gap-sm: 8px;
+  --gap-md: 12px;
+  --gap-lg: 16px;
+  --gap-xl: 24px;
+
+  /* Elevation */
+  --shadow-card: 0 1px 3px rgb(0 0 0 / 0.04), 0 6px 20px rgb(99 102 241 / 0.06);
+  --shadow-panel:
+    0 2px 8px rgb(0 0 0 / 0.06), 0 12px 36px rgb(99 102 241 / 0.08);
+  --shadow-float: 0 8px 40px rgb(0 0 0 / 0.12), 0 2px 8px rgb(0 0 0 / 0.06);
+}
+
+.dark {
+  --text-muted: oklch(0.62 0.01 280);
+  --text-xmuted: oklch(0.5 0.008 280);
+  --bg-panel: color-mix(
+    in oklab,
+    var(--color-card) 90%,
+    oklch(0.3 0.02 289) 10%
+  );
+}
+
+/* ── Micro-interactions & transitions ── */
+@layer base {
+  /* Smooth tab/view transitions */
+  [data-aura-view] {
+    animation: aura-fade-in 0.18s ease-out both;
+  }
+  @keyframes aura-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Skeleton loading pulse */
+  .aura-skeleton {
+    background: linear-gradient(
+      90deg,
+      color-mix(in oklab, var(--color-border) 60%, transparent) 25%,
+      color-mix(in oklab, var(--color-border) 30%, transparent) 50%,
+      color-mix(in oklab, var(--color-border) 60%, transparent) 75%
+    );
+    background-size: 200% 100%;
+    animation: aura-shimmer 1.4s ease-in-out infinite;
+    border-radius: var(--radius-sm);
+  }
+  @keyframes aura-shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
+  /* Button base — smooth hover without inline onMouseEnter handlers */
+  .aura-btn {
+    transition:
+      background 0.12s ease,
+      color 0.12s ease,
+      box-shadow 0.12s ease,
+      opacity 0.12s ease,
+      transform 0.1s ease;
+    will-change: background, box-shadow;
+  }
+  .aura-btn:active {
+    transform: scale(0.97);
+  }
+
+  /* Tab pill */
+  .aura-tab {
+    transition:
+      background 0.15s ease,
+      color 0.15s ease;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+  }
+
+  /* Card hover lift */
+  .aura-card-hover {
+    transition:
+      box-shadow 0.18s ease,
+      transform 0.18s ease,
+      border-color 0.18s ease;
+  }
+  .aura-card-hover:hover {
+    box-shadow: var(--shadow-panel);
+    transform: translateY(-1px);
+    border-color: color-mix(in oklab, var(--accent) 40%, var(--border));
+  }
+
+  /* Progress bar fill animation */
+  .aura-bar-fill {
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Score badge pulse when value changes */
+  @keyframes aura-score-pop {
+    0% {
+      transform: scale(1);
+    }
+    40% {
+      transform: scale(1.08);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  .aura-score-updated {
+    animation: aura-score-pop 0.3s ease-out;
+  }
+
+  /* Phase indicator — the flow bar between decision steps */
+  .aura-phase-bar {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    position: relative;
+  }
+  .aura-phase-step {
+    flex: 1;
+    height: 3px;
+    background: var(--border);
+    transition: background 0.3s ease;
+    position: relative;
+  }
+  .aura-phase-step.active {
+    background: var(--accent);
+  }
+  .aura-phase-step.done {
+    background: var(--status-ok);
+  }
+
+  /* Smooth panel slide-in from right (Decision → Arch handoff) */
+  @keyframes aura-slide-right {
+    from {
+      opacity: 0;
+      transform: translateX(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  .aura-slide-in {
+    animation: aura-slide-right 0.22s ease-out both;
+  }
+
+  /* Reduce motion */
+  @media (prefers-reduced-motion: reduce) {
+    [data-aura-view],
+    .aura-skeleton,
+    .aura-btn,
+    .aura-card-hover,
+    .aura-bar-fill,
+    .aura-phase-step,
+    .aura-slide-in {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+}
+
+/* ── Utility classes to replace common inline style patterns ── */
+.aura-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 8px;
+  font-size: 12.5px;
+  font-weight: 600;
+  font-family: inherit;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-muted);
+}
+.aura-chip-accent {
+  background: color-mix(in oklab, var(--accent) 12%, var(--bg-card));
+  border-color: color-mix(in oklab, var(--accent) 30%, var(--border));
+  color: var(--accent-strong);
+}
+.aura-label-xs {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-xmuted);
+}
+.aura-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 12px 0;
+}
+.aura-score-ring {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  font-family: inherit;
+}
+
+@utility aura-grid-section {
+  display: grid;
+  gap: 1rem;
+}
+
+@media print {
+  aside,
+  button,
+  .no-print {
+    display: none !important;
+  }
+  main {
+    background: white !important;
+  }
+  .surface-card,
+  .aura-panel,
+  .aura-kpi,
+  .aura-hero {
+    box-shadow: none !important;
+    border-color: #e5e7eb !important;
+  }
+}
+
+/* ── Identité visuelle V2 « blanc / indigo » ───────────────────────────────
+   Jetons redéfinis uniquement sous .v2-skin : la V1 n'est pas affectée.
+   Fond blanc franc, encre sombre, indigo #6C5CE7 en couleur d'action.
+   --copper reste défini comme alias de l'indigo pour compatibilité.       */
+.v2-skin {
+  --background: oklch(1 0 0); /* blanc franc */
+  --foreground: oklch(0.205 0.03 285); /* encre sombre */
+  --surface: oklch(0.985 0.003 285);
+  --surface-2: oklch(0.976 0.006 285); /* gris très clair */
+  --card: oklch(1 0 0);
+  --card-foreground: var(--foreground);
+  --popover: oklch(1 0 0);
+  --popover-foreground: var(--foreground);
+
+  --brand: oklch(0.575 0.196 288); /* #6C5CE7 indigo signature */
+  --brand-strong: oklch(0.49 0.19 288);
+  --brand-soft: oklch(0.965 0.02 288);
+  --brand-foreground: oklch(1 0 0);
+
+  /* Alias de compatibilité : tout ce qui était cuivre devient indigo. */
+  --copper: var(--brand);
+  --copper-soft: var(--brand-soft);
+
+  --primary: var(--brand);
+  --primary-foreground: var(--brand-foreground);
+  --secondary: oklch(0.968 0.006 285);
+  --secondary-foreground: var(--foreground);
+  --muted: oklch(0.968 0.006 285);
+  --muted-foreground: oklch(0.505 0.022 285);
+  --accent: var(--brand-soft);
+  --accent-foreground: var(--brand-strong);
+  --border: oklch(0.915 0.008 285);
+  --input: oklch(0.915 0.008 285);
+  --ring: var(--brand);
+
+  /* Statuts constants sur toute la V2. */
+  --v2-favorable: oklch(0.62 0.14 152);
+  --v2-favorable-soft: oklch(0.962 0.038 152);
+  --v2-acceptable: oklch(0.72 0.14 78);
+  --v2-acceptable-soft: oklch(0.965 0.05 82);
+  --v2-defavorable: oklch(0.585 0.19 22);
+  --v2-defavorable-soft: oklch(0.962 0.035 22);
+  --v2-inconnu: oklch(0.62 0.01 285);
+  --v2-inconnu-soft: oklch(0.965 0.004 285);
+
+  /* Échelle d'indigo : cinq degrés, du fond très pâle à l'encre profonde. */
+  --v2-indigo-1: oklch(0.978 0.012 288);
+  --v2-indigo-2: oklch(0.945 0.032 288);
+  --v2-indigo-3: oklch(0.575 0.196 288);
+  --v2-indigo-4: oklch(0.455 0.175 288);
+  --v2-indigo-5: oklch(0.315 0.115 288);
+
+  font-family: var(--font-sans);
+  background: var(--background);
+  color: var(--foreground);
+}
+@theme inline {
+  --color-copper: var(--copper);
+  --color-copper-soft: var(--copper-soft);
+}
+.v2-skin h1,
+.v2-skin h2,
+.v2-skin h3 {
+  font-family: inherit;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+.v2-skin .v2-title {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+.v2-skin .v2-label {
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--foreground) 45%, transparent);
+}
+.v2-skin .v2-rule {
+  height: 1px;
+  background: var(--border);
+}
+.v2-skin .v2-paper {
+  background: var(--surface-2);
+}
+.v2-skin .v2-sheet {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 1px 2px color-mix(in oklab, var(--foreground) 4%, transparent);
+}
+.v2-skin .v2-chip {
+  border-radius: 999px;
+  border-width: 1px;
+  border-style: solid;
+  transition:
+    border-color 0.18s ease,
+    color 0.18s ease,
+    background-color 0.18s ease;
+}
+.v2-skin .v2-chip:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+  background: var(--brand-soft);
+}
+.v2-skin .v2-label-copper {
+  color: var(--brand);
+}
+/* Pastille d'icône indigo pâle, comme sur les écrans de référence. */
+.v2-skin .v2-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 8px;
+  background: var(--brand-soft);
+  color: var(--brand-strong);
+}
+/* Étiquettes de statut : quatre lectures, partout les mêmes. */
+.v2-skin .v2-statut {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 6px;
+  padding: 0.1rem 0.45rem;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.v2-skin .v2-statut-favorable {
+  background: var(--v2-favorable-soft);
+  color: var(--v2-favorable);
+}
+.v2-skin .v2-statut-acceptable {
+  background: var(--v2-acceptable-soft);
+  color: color-mix(in oklab, var(--v2-acceptable) 80%, black);
+}
+.v2-skin .v2-statut-defavorable {
+  background: var(--v2-defavorable-soft);
+  color: var(--v2-defavorable);
+}
+.v2-skin .v2-statut-inconnu {
+  background: var(--v2-inconnu-soft);
+  color: var(--v2-inconnu);
+}
+.v2-skin .v2-fade {
+  animation: v2-fade-up 0.28s ease both;
+}
+@keyframes v2-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Nuances d'indigo : fonds de section, filets et accents de profondeur. */
+.v2-skin .v2-tint-1 {
+  background: var(--v2-indigo-1);
+}
+.v2-skin .v2-tint-2 {
+  background: var(--v2-indigo-2);
+}
+.v2-skin .v2-ink-4 {
+  color: var(--v2-indigo-4);
+}
+.v2-skin .v2-ink-5 {
+  color: var(--v2-indigo-5);
+}
+.v2-skin .v2-edge {
+  border-color: color-mix(in oklab, var(--v2-indigo-3) 22%, transparent);
+}
+/* Élément proposé par Aura, pas encore accepté par le décideur. */
+.v2-skin .v2-suggere {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 6px;
+  padding: 0.1rem 0.4rem;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  background: var(--v2-indigo-2);
+  color: var(--v2-indigo-5);
+}
+
+/* ── Aura clarity layer — shared by every product space ─────────────────── */
+.aura-page-body {
+  --aura-page-max: none;
+  flex: 1;
+  min-height: 0;
+  width: 100% !important;
+  max-width: none !important;
+  margin-inline: 0;
+  padding: clamp(12px, 1.3vw, 20px) clamp(12px, 1.6vw, 26px) 44px;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1vw, 16px);
+}
+.aura-page-header {
+  padding-inline: clamp(12px, 1.6vw, 26px) !important;
+}
+.aura-page-body :where(p) {
+  text-wrap: pretty;
+}
+.aura-page-body :where(input, select, textarea, button) {
+  font-size: max(13px, 0.9em);
+}
+@media (min-width: 1600px) {
+  .aura-page-body {
+    padding-inline: clamp(20px, 1.8vw, 40px);
+  }
+}
+.aura-page-body :where(button, a, input, select, textarea) {
+  min-width: 0;
+}
+.aura-page-body :where(.pack-card, .studio-step, .connect-card) {
+  box-shadow: 0 8px 24px rgba(45, 35, 100, 0.045) !important;
+}
+
+/* Signature Aura — lumineuse, éditoriale et calme, partagée par l'application. */
+.aura-page-header {
+  padding-inline: clamp(16px, 2.3vw, 38px) !important;
+  background: color-mix(
+    in oklab,
+    var(--color-card) 94%,
+    var(--brand-soft) 6%
+  ) !important;
+  backdrop-filter: blur(10px);
+}
+.aura-page-body :where(.surface-card, .aura-panel, [data-slot="card"]) {
+  border-color: color-mix(in oklab, var(--color-border) 88%, var(--brand) 12%);
+  box-shadow: 0 10px 34px rgba(78, 56, 190, 0.06);
+}
+.aura-vitrine {
+  overflow-x: clip;
+}
+.aura-vitrine :where(h1, h2, h3) {
+  text-wrap: balance;
+}
+.aura-vitrine :where(p) {
+  text-wrap: pretty;
+}
+.aura-vitrine a {
+  transition:
+    background 0.16s ease,
+    color 0.16s ease,
+    box-shadow 0.16s ease,
+    transform 0.16s ease;
+}
+.aura-vitrine a:hover {
+  transform: translateY(-1px);
+}
+
+/* A single, predictable floating action per viewport. */
+.aura-copilot-trigger {
+  position: fixed;
+  right: max(18px, env(safe-area-inset-right));
+  bottom: max(18px, env(safe-area-inset-bottom));
+  z-index: 55;
+}
+.aura-expert-surface {
+  width: 100%;
+}
+.aura-expert-surface > * {
+  min-width: 0;
+}
+.aura-understanding {
+  border: 0 !important;
+  border-left: 0 !important;
+  background: linear-gradient(
+    135deg,
+    #f8f6ff 0%,
+    #fff 58%,
+    #eefbf7 100%
+  ) !important;
+  box-shadow: inset 0 0 0 1px #e8e1ff;
+}
+.aura-understanding-title {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: #ece7ff;
+  color: #5b3df0 !important;
+}
+@media (max-width: 820px) {
+  .aura-page-header {
+    position: static !important;
+    padding-block: 14px !important;
+  }
+  .aura-page-body {
+    padding-bottom: 88px;
+  }
+}
+@media (max-width: 560px) {
+  .aura-page-body {
+    padding-inline: 12px;
+    gap: 12px;
+  }
+  .aura-page-header {
+    padding-inline: 14px !important;
+  }
+  .aura-brand-lockup svg {
+    max-width: 44px;
+    height: auto;
+  }
+}
+
+@media (max-width: 860px) {
+  .aura-vitrine-nav {
+    padding-block: 10px !important;
+  }
+  .aura-vitrine-links {
+    gap: 8px !important;
+  }
+  .aura-vitrine-links > a:not(:last-of-type) {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .aura-vitrine-nav {
+    padding-inline: 14px !important;
+  }
+  .aura-vitrine-links > span {
+    display: none !important;
+  }
+}
+
+
+/* ── Bandeau d'en-tête Aura (Supply Chain, Décider) ─────────────────────────
+   Sombre indigo-noir, fine grille lumineuse, halo indigo discret. Compact. */
+.aura-hero-band{position:relative;isolation:isolate;overflow:hidden;background:var(--aura-hero-bg)!important;color:#fff;border-bottom:1px solid var(--aura-hero-line)!important}
+.aura-hero-band::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(var(--aura-hero-grid) 1px,transparent 1px),linear-gradient(90deg,var(--aura-hero-grid) 1px,transparent 1px);background-size:28px 28px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 30%,#000 75%,transparent);mask-image:linear-gradient(90deg,transparent,#000 30%,#000 75%,transparent)}
+.aura-hero-band::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;z-index:-1;background:linear-gradient(90deg,transparent,var(--aura-indigo-300),transparent);opacity:.55}
+.aura-hero-band h1,.aura-hero-band .aura-hero-title{color:#fff!important;font-family:var(--font-display)!important;font-weight:600!important;letter-spacing:-.015em}
+.aura-hero-band p,.aura-hero-band .aura-hero-sub{color:var(--aura-indigo-200)!important}
+.aura-hero-band .aura-hero-eyebrow{color:var(--aura-indigo-300)!important;letter-spacing:.14em}
+
+/* ── Barre du haut continue ─────────────────────────────────────────────────
+   Le bandeau du contenu, l'en-tête du menu latéral et celui du copilote forment
+   une seule barre : dégradé et grille rapportés à la fenêtre (attachment fixed)
+   pour qu'aucun raccord ne se voie, même hauteur, filet bas uni. */
+.aura-hero-band{background-attachment:fixed!important;min-height:var(--aura-top-h);box-sizing:border-box;flex-shrink:0}
+.aura-hero-band::before{background-attachment:fixed;-webkit-mask-image:none;mask-image:none}
+.aura-hero-band::after{display:none}
+.aura-topbar-side{height:var(--aura-top-h);min-height:var(--aura-top-h)!important;flex:0 0 auto}
+/* Marque Aura sur fond sombre : signe éclairci, mot « AURA » en blanc. */
+.aura-hero-band .aura-official-artwork img{filter:brightness(0) invert(1)}
+.aura-hero-band .aura-official-artwork polygon:nth-child(-n+2){fill:#8e8bff}
+.aura-hero-band .aura-official-artwork polygon:nth-child(3){fill:#e4e3ff}
+.aura-hero-band .aura-brand-lockup>span:last-child{color:var(--aura-indigo-200)!important}
+
+/* Carte « verre » légère pour les chiffres clés. */
+.aura-glass{background:var(--aura-glass-bg)!important;border:1px solid var(--aura-glass-border)!important;box-shadow:var(--aura-glass-shadow)!important;-webkit-backdrop-filter:blur(10px) saturate(1.2);backdrop-filter:blur(10px) saturate(1.2);transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.aura-glass:hover{transform:translateY(-2px);box-shadow:var(--aura-glass-shadow-hover)!important;border-color:rgb(71 67 230 / .3)!important}
+
+/* Menu « ⋯ » de l'atelier Décider. */
+.aura-tools-menu{position:relative;flex-shrink:0}
+.aura-tools-trigger{position:relative;display:grid;place-items:center;min-width:32px;height:28px;padding:0 8px;border-radius:8px;border:1px solid var(--v4-border);background:#fff;color:var(--v4-text2);font:800 15px/1 var(--font-sans);cursor:pointer;transition:border-color .15s,color .15s,background .15s}
+.aura-tools-trigger:hover,.aura-tools-trigger[aria-expanded="true"]{border-color:var(--aura-indigo);color:var(--aura-indigo);background:var(--aura-indigo-50)}
+.aura-tools-trigger:focus-visible,.aura-tools-panel button:focus-visible{outline:2px solid var(--aura-indigo);outline-offset:2px}
+.aura-tools-badge{margin-left:6px;background:var(--aura-indigo);color:#fff;font-size:12px;font-weight:800;border-radius:8px;padding:1px 5px;line-height:1.4}
+.aura-tools-trigger .aura-tools-badge{position:absolute;top:-6px;right:-6px;margin:0}
+.aura-tools-panel{position:absolute;right:0;top:calc(100% + 6px);z-index:60;min-width:220px;padding:6px;border-radius:10px;background:#fff;border:1px solid var(--aura-glass-border);box-shadow:0 18px 45px rgb(21 29 82 / .18);display:grid;gap:1px;animation:aura-pop .14s ease-out}
+.aura-tools-panel hr{border:0;border-top:1px solid var(--v4-border);margin:4px 2px}
+.aura-tools-label{padding:6px 10px 3px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--v4-text3)}
+.aura-tools-panel button{display:flex;align-items:center;gap:8px;border:0;background:transparent;text-align:left;padding:8px 10px;border-radius:7px;font:650 13px var(--font-sans);color:var(--v4-text);cursor:pointer}
+.aura-tools-panel button:hover{background:var(--aura-indigo-50);color:var(--aura-indigo)}
+.aura-tools-panel button[aria-checked="true"]{color:var(--aura-indigo);font-weight:800}
+.aura-tools-check{width:14px;display:inline-grid;place-items:center;color:var(--aura-indigo)}
+@keyframes aura-pop{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+
+@media (prefers-reduced-motion: reduce){
+  .aura-glass,.aura-glass:hover{transition:none;transform:none}
+  .aura-tools-panel{animation:none}
+}
+.aura-hero-band .aura-hero-badge{background:rgb(71 67 230 / .28)!important;color:var(--aura-indigo-200)!important;box-shadow:inset 0 0 0 1px var(--aura-hero-line)}
+.aura-page-header.aura-hero-band{padding:8px 22px!important;align-items:center!important}
+.aura-page-header.aura-hero-band p{margin-top:2px!important}
+/* En-tête de l'atelier Décider (hors intégration Supply). */
+.atelier-topbar-hero{padding:12px 24px!important}
+.atelier-topbar-hero>div:first-of-type{color:#fff!important;font-family:var(--font-display);font-size:17px!important;font-weight:600!important;letter-spacing:-.01em}
+.atelier-topbar-hero>div:first-of-type button{color:var(--aura-indigo-200)!important}
+.atelier-topbar-hero select{background:rgb(255 255 255 / .08)!important;color:#fff!important;border-color:var(--aura-hero-line)!important}
+.atelier-topbar-hero select option{color:#111}
+.atelier-topbar-hero .atelier-hamburger{color:#fff!important}
+.atelier-topbar-hero [data-testid="atelier-new-decision"]{background:#fff!important;color:var(--aura-night)!important;transition:background .15s,color .15s}
+.atelier-topbar-hero [data-testid="atelier-new-decision"]:hover{background:var(--aura-indigo)!important;color:#fff!important}
+.atelier-topbar-hero .aura-tools-trigger{background:rgb(255 255 255 / .08);color:#fff;border-color:var(--aura-hero-line)}
+.atelier-topbar-hero .aura-tools-trigger:hover,.atelier-topbar-hero .aura-tools-trigger[aria-expanded="true"]{background:rgb(255 255 255 / .16);color:#fff;border-color:var(--aura-indigo-300)}
+
+/* ── Questions d'interview : mots clés surlignés avec douceur ─────────────── */
+mark.aura-kw{background:#e8e8ff;color:#2e2aa8;font-weight:600;padding:0 .1em;border-radius:4px;box-decoration-break:clone;-webkit-box-decoration-break:clone;box-shadow:inset 0 -2px 0 rgb(71 67 230 / .26)}
+.aura-question-card{position:relative;border:1px solid var(--aura-glass-border);border-radius:14px;background:linear-gradient(180deg,#fbfbff,#fff 70%);padding:18px 20px 16px;box-shadow:var(--aura-glass-shadow);animation:aura-q-in .28s ease-out}
+.aura-question-card::before{content:"";position:absolute;left:0;top:16px;bottom:16px;width:3px;border-radius:0 3px 3px 0;background:linear-gradient(180deg,var(--aura-indigo),#7c7af0)}
+.aura-question-step{display:inline-flex;align-items:center;gap:8px;font:700 12.5px/1 var(--font-body);letter-spacing:.12em;text-transform:uppercase;color:#6b69c9}
+.aura-question-step b{display:inline-grid;place-items:center;min-width:22px;height:22px;border-radius:7px;background:var(--aura-indigo-50);color:var(--aura-indigo);font-weight:800;letter-spacing:0;border:1px solid rgb(71 67 230 / .18)}
+.aura-question-title{margin:10px 0 0;font:600 clamp(20px,1.7vw,25px)/1.3 var(--font-display)!important;letter-spacing:-.02em!important;color:#14163a}
+.aura-question-title mark.aura-kw{font-weight:700}
+.aura-question-help mark.aura-kw{background:#efeffd;box-shadow:none;font-weight:600;color:#3531b8}
+.aura-question-help{margin:8px 0 0;font:450 13px/1.55 var(--font-body);color:#5b5f7a;max-width:68ch}
+@keyframes aura-q-in{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){.aura-question-card{animation:none}}
+
+/* ── Lisibilité (Lexend) : petits textes plus espacés, questions/réponses +1,5 px ── */
+.text-\[10px\],.text-\[10\.5px\],.text-\[11px\],.text-xs{letter-spacing:.018em}
+.text-\[11\.5px\],.text-\[12px\],.text-\[12\.5px\],.text-sm{letter-spacing:.01em}
+input,textarea,select{letter-spacing:.008em}
+.aura-question-title{font-size:clamp(21px,1.65vw,24px)!important;line-height:1.3}
+.aura-question-help{font-size:13.5px;line-height:1.6}
+.aura-answer,.aura-answer textarea,.aura-answer input,textarea.aura-answer,input.aura-answer{font-size:14px!important;line-height:1.6!important}
+textarea.aura-answer::placeholder{font-size:15px}
+.aura-q{color:#1a1d4a}
+.aura-q mark.aura-kw{font-weight:700}
+/* Pastille d'icône cohérente (démos, intentions) */
+.aura-icon-pill{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#eeeefe,#dcdcfd);color:#4743E6;border:1px solid rgb(71 67 230 / .18);flex-shrink:0}
+.aura-icon-pill svg{width:20px;height:20px}
+/* Zone « Importer un document » */
+.aura-doc-drop{display:flex;align-items:center;gap:12px;border:1.5px dashed rgb(71 67 230 / .45);background:#f7f7ff;border-radius:14px;padding:12px 14px;cursor:pointer;transition:background .15s,border-color .15s;text-align:left;width:100%}
+.aura-doc-drop:hover,.aura-doc-drop[data-drag="true"]{background:#eeeefe;border-color:#4743E6}
+.aura-doc-drop .aura-doc-title{font-weight:650;color:#2e2aa8;font-size:14.5px}
+.aura-doc-drop .aura-doc-formats{font-size:13px;color:#6b6f8f;letter-spacing:.02em}
+.aura-hero-band .aura-kw-hero{font-style:normal;color:#c7c6ff;border-bottom:2px solid rgb(199 198 255 / .5)}
+/* Questions & réponses : légèrement plus grandes (+1,5 à 3 px) et plus aérées */
+html .cv2-question-head h2{font-size:clamp(24px,1.9vw,28px);line-height:1.32}
+html .cv2-field>span{font-size:13px;letter-spacing:.015em}
+html .cv2-field input,html .cv2-field textarea{font-size:16px;line-height:1.6}
+html .cv2-choice strong{font-size:14.5px}
+html .cv2-choice small{font-size:13px}
+html .cdr-field textarea,html .cdr-field select,html .cdr-add-app input{font-size:16px;line-height:1.6}
+html .cdr-understanding header strong{font-size:13.5px}
+html .cdr-understanding header small{font-size:13px}
+html .cdr-understanding li,html .cdr-understanding p,html .cdr-understanding button{font-size:13.5px;line-height:1.5}
+html .cp-q{font-size:15px;line-height:1.5}
+html .bora5-question{font-size:15.5px}
+.aura-q mark.aura-kw{padding:0 .12em}
+
+/* ── Responsive transverse (Décider, Architect, Supply, pages communes) ──
+   Cibles tactiles : 32 px minimum partout, 40 px sur mobile/tablette.
+   Tableaux : défilement horizontal dans leur propre conteneur, jamais la page.
+   Textes : retour à la ligne entre les mots ; un mot trop long (URL, code) se
+   coupe seulement s'il ne tient pas seul sur la ligne. */
+.v4-main{overflow-wrap:break-word}
+.v4-main :is(button,[role="button"],[role="tab"],select,summary,input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"])){min-height:32px}
+.v4-main img,.v4-main svg:not([width]),.v4-main video,.v4-main canvas{max-width:100%}
+.v4-main pre{max-width:100%;overflow-x:auto}
+@media (max-width:1023px){
+  .v4-main table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+}
+@media (max-width:1023px) and (pointer:coarse),(max-width:767px){
+  .v4-main :is(button,[role="button"],[role="tab"],select,summary,input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="hidden"])){min-height:40px}
+}
+.v4-main :is(input[type="checkbox"],input[type="radio"]){width:18px;height:18px}
+.v4-main label:has(> input[type="checkbox"]),.v4-main label:has(> input[type="radio"]){min-height:32px}
+/* Frise des étapes Architect : sur mobile, les traits de liaison orphelins disparaissent. */
+@media (max-width:760px){.archi-stepbar>div>span[aria-hidden="true"]{display:none}}
+
+/* Décider : échelle typographique resserrée (≈ −12 %), texte courant ≥ 12 px. */
+.dd,.aura-home{font-size:14px}

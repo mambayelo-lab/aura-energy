@@ -1,0 +1,2 @@
+ALTER TABLE public.semantic_attributes ADD COLUMN IF NOT EXISTS is_business_key BOOLEAN NOT NULL DEFAULT false;
+ALTER TABLE public.semantic_objects ADD COLUMN IF NOT EXISTS business_key_attribute TEXT;

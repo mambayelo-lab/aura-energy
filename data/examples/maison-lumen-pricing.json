@@ -1,0 +1,124 @@
+{
+  "_comment": "Capacité 2-additive Maison Lumen — exemple de référence pour les tests",
+  "_verified": "Monotonie ✓, μ(∅)=0 ✓, μ(N)=1 ✓, Σm_i+Σm_ij=1 ✓",
+  "_key_rule": "Clés de paires triées lexicographiquement (pairKey = [a,b].sort().join(','))",
+
+  "criteria": ["margin", "revenue", "retention", "operations"],
+
+  "capacity": {
+    "type": "two-additive",
+    "criteriaIds": ["margin", "revenue", "retention", "operations"],
+    "singletonMobius": {
+      "margin": 0.30,
+      "revenue": 0.27,
+      "retention": 0.22,
+      "operations": 0.13
+    },
+    "pairMobius": {
+      "margin,revenue":     0.04,
+      "margin,retention":   0.03,
+      "margin,operations": -0.02,
+      "retention,revenue":  0.02,
+      "operations,revenue": -0.01,
+      "operations,retention": 0.02
+    }
+  },
+
+  "_mu_pairs": {
+    "margin,revenue": 0.61,
+    "margin,retention": 0.55,
+    "margin,operations": 0.41,
+    "retention,revenue": 0.51,
+    "operations,revenue": 0.39,
+    "operations,retention": 0.37
+  },
+  "_mu_triples": {
+    "margin,retention,revenue": 0.88,
+    "margin,operations,revenue": 0.71,
+    "margin,operations,retention": 0.68,
+    "operations,retention,revenue": 0.65
+  },
+  "_mu_full": 1.00,
+
+  "_shapley": {
+    "margin": 0.325,
+    "revenue": 0.295,
+    "retention": 0.255,
+    "operations": 0.125,
+    "_sum": 1.0
+  },
+
+  "_interaction_indices": {
+    "margin,revenue": 0.04,
+    "margin,retention": 0.03,
+    "margin,operations": -0.02,
+    "retention,revenue": 0.02,
+    "operations,revenue": -0.01,
+    "operations,retention": 0.02,
+    "_note": "Pour 2-additif : I_ij = m_ij exactement"
+  },
+
+  "currentState": {
+    "margin": 0.63,
+    "revenue": 0.60,
+    "retention": 0.61,
+    "operations": 0.70
+  },
+  "_choquet_x0": 0.6059,
+  "_choquet_note": "Ordre croissant : revenue(0.60) < retention(0.61) < margin(0.63) < operations(0.70). Calcul : 0.60×1 + 0.01×0.66 + 0.02×0.41 + 0.07×0.13 ≈ 0.606",
+
+  "maxReachableState": {
+    "margin": 0.78,
+    "revenue": 0.82,
+    "retention": 0.85,
+    "operations": 0.78
+  },
+
+  "attainability": {
+    "margin": 0.85,
+    "revenue": 0.90,
+    "retention": 0.80,
+    "operations": 0.95
+  },
+
+  "improvementModels": [
+    {
+      "criterionId": "margin",
+      "currentScore": 0.63,
+      "maxReachableScore": 0.78,
+      "attainability": 0.85,
+      "confidence": 0.85,
+      "cost": 15000,
+      "duration": 90
+    },
+    {
+      "criterionId": "revenue",
+      "currentScore": 0.60,
+      "maxReachableScore": 0.82,
+      "attainability": 0.90,
+      "confidence": 0.92,
+      "cost": 22000,
+      "duration": 60
+    },
+    {
+      "criterionId": "retention",
+      "currentScore": 0.61,
+      "maxReachableScore": 0.85,
+      "attainability": 0.80,
+      "confidence": 0.88,
+      "cost": 18000,
+      "duration": 120
+    },
+    {
+      "criterionId": "operations",
+      "currentScore": 0.70,
+      "maxReachableScore": 0.78,
+      "attainability": 0.95,
+      "confidence": 0.96,
+      "cost": 8000,
+      "duration": 30
+    }
+  ],
+
+  "target": 0.75
+}

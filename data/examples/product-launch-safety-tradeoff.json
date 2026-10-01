@@ -1,0 +1,223 @@
+{
+  "title": "Product Launch: Quality vs Time-to-Market",
+  "description": "Illustrative example showing how Aura's non-compensatory guarantee prevents masking of critical safety weakness",
+  "contextRaw": "Should we launch product version A (fast, but incomplete safety testing) or version B (slower, but comprehensive safety validation) or version C (moderate approach)?",
+  "problemType": "product_decision",
+  "caseType": "nouveau_produit",
+  "sector": "Médical/Pharma",
+  "attitude": "Pessimiste",
+  "dimensions": ["Qualité & Sécurité", "Délai & Marché", "Coûts & Ressources"],
+  "criteria": [
+    {
+      "id": "safety_validation",
+      "label": "Complétude de la validation de sécurité",
+      "description": "Étendue des tests de sécurité, conformité réglementaire, durabilité du produit",
+      "poids": 3,
+      "importance": "Essentiel",
+      "level": "MOE"
+    },
+    {
+      "id": "time_to_market",
+      "label": "Délai de mise en marché",
+      "description": "Temps avant première commercialisation",
+      "poids": 2,
+      "importance": "Important",
+      "level": "MOE"
+    },
+    {
+      "id": "development_cost",
+      "label": "Coût de développement",
+      "description": "Budget requis pour compléter le projet",
+      "poids": 2,
+      "importance": "Important",
+      "level": "MOE"
+    },
+    {
+      "id": "team_capability",
+      "label": "Capacité de l'équipe",
+      "description": "Ressources disponibles pour le déploiement et le support",
+      "poids": 1,
+      "importance": "Secondaire",
+      "level": "MOE"
+    }
+  ],
+  "leviersDef": [
+    {
+      "id": "lev_dev_approach",
+      "label": "Approche de développement",
+      "type": "decision",
+      "description": "Stratégie de validation et de mise en marché",
+      "options": [
+        {
+          "id": "opt_fast_launch",
+          "label": "Lancement rapide (6 mois)",
+          "impacts": {
+            "safety_validation": "--",
+            "time_to_market": "++",
+            "development_cost": "++",
+            "team_capability": "+"
+          }
+        },
+        {
+          "id": "opt_balanced",
+          "label": "Approche équilibrée (10 mois)",
+          "impacts": {
+            "safety_validation": "+",
+            "time_to_market": "0",
+            "development_cost": "0",
+            "team_capability": "+"
+          }
+        },
+        {
+          "id": "opt_comprehensive",
+          "label": "Validation complète (14 mois)",
+          "impacts": {
+            "safety_validation": "++",
+            "time_to_market": "--",
+            "development_cost": "-",
+            "team_capability": "0"
+          }
+        }
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "scen_fast",
+      "label": "Lancement Rapide (Option A)",
+      "description": "Commercialisation en 6 mois avec tests de sécurité minimaux",
+      "color": "#ef4444",
+      "leviers": [
+        {
+          "id": "lev_dev_approach",
+          "label": "Approche de développement",
+          "valeur": "opt_fast_launch",
+          "type": "decision"
+        }
+      ],
+      "scores": {
+        "safety_validation": 0,
+        "time_to_market": 100,
+        "development_cost": 90,
+        "team_capability": 75
+      },
+      "valeur": 66,
+      "faisabilite": 85,
+      "auraInsight": "Élevé pour délai et coût; DÉFAILLANT pour sécurité (validation: 0). Pondération 3 sur sécurité élimine cette option en logique non-compensatoire."
+    },
+    {
+      "id": "scen_balanced",
+      "label": "Approche Équilibrée (Option B)",
+      "description": "Mise en marché en 10 mois avec validation de sécurité modérée",
+      "color": "#3b82f6",
+      "leviers": [
+        {
+          "id": "lev_dev_approach",
+          "label": "Approche de développement",
+          "valeur": "opt_balanced",
+          "type": "decision"
+        }
+      ],
+      "scores": {
+        "safety_validation": 50,
+        "time_to_market": 50,
+        "development_cost": 50,
+        "team_capability": 75
+      },
+      "valeur": 55,
+      "faisabilite": 75,
+      "auraInsight": "Équilibré: tous les critères à niveau modéré/acceptable. Recommandé par Aura."
+    },
+    {
+      "id": "scen_comprehensive",
+      "label": "Validation Complète (Option C)",
+      "description": "Déploiement complet avec tests exhaustifs (14 mois)",
+      "color": "#10b981",
+      "leviers": [
+        {
+          "id": "lev_dev_approach",
+          "label": "Approche de développement",
+          "valeur": "opt_comprehensive",
+          "type": "decision"
+        }
+      ],
+      "scores": {
+        "safety_validation": 100,
+        "time_to_market": 20,
+        "development_cost": 40,
+        "team_capability": 50
+      },
+      "valeur": 55,
+      "faisabilite": 60,
+      "auraInsight": "Excellence en sécurité; faible pour délai. Acceptable mais coûteux en temps."
+    }
+  ],
+  "comparisonAnalysis": {
+    "description": "Comparison between Aura non-compensatory and simple weighted-average methods",
+    "criteria_weights": {
+      "safety_validation": 0.40,
+      "time_to_market": 0.27,
+      "development_cost": 0.27,
+      "team_capability": 0.06
+    },
+    "weighted_average_rankings": [
+      {
+        "scenario": "Lancement Rapide",
+        "safety_validation_weighted": "0 × 0.40 = 0.00",
+        "time_to_market_weighted": "100 × 0.27 = 27.00",
+        "development_cost_weighted": "90 × 0.27 = 24.30",
+        "team_capability_weighted": "75 × 0.06 = 4.50",
+        "total": 55.8,
+        "rank": 2,
+        "note": "Weighted average ranks FAST LAUNCH 2nd. The excellent time-to-market (100) and cost efficiency (90) partially compensate for the catastrophic safety failure (0)."
+      },
+      {
+        "scenario": "Approche Équilibrée",
+        "safety_validation_weighted": "50 × 0.40 = 20.00",
+        "time_to_market_weighted": "50 × 0.27 = 13.50",
+        "development_cost_weighted": "50 × 0.27 = 13.50",
+        "team_capability_weighted": "75 × 0.06 = 4.50",
+        "total": 51.5,
+        "rank": 3,
+        "note": "Weighted average ranks BALANCED 3rd — lowest overall score because it excels at nothing."
+      },
+      {
+        "scenario": "Validation Complète",
+        "safety_validation_weighted": "100 × 0.40 = 40.00",
+        "time_to_market_weighted": "20 × 0.27 = 5.40",
+        "development_cost_weighted": "40 × 0.27 = 10.80",
+        "team_capability_weighted": "50 × 0.06 = 3.00",
+        "total": 59.2,
+        "rank": 1,
+        "note": "Weighted average ranks COMPREHENSIVE 1st — highest because safety excellence (100) outweighs time/cost penalties."
+      }
+    ],
+    "aura_rankings": [
+      {
+        "scenario": "Lancement Rapide",
+        "ordinal_aggregation": "min(¬ω_i, g_i) aggregation",
+        "safety_validation_ordinal": "0 (fails non-compensatory test: ¬ω_safety = ¬3 = 0 > 0? NO)",
+        "result": "ELIMINATED",
+        "reasoning": "Aura's non-compensatory guarantee: if safety_validation (with weight 'Essentiel'/3) scores 0, the entire option fails because the min() function in Eq.6 caps the global grade at max(¬ω_i, g_i) = max(0, 0) = 0. No compensating strength in other criteria can override a critical failure."
+      },
+      {
+        "scenario": "Approche Équilibrée",
+        "ordinal_aggregation": "min(¬ω_i, g_i) aggregation",
+        "computation": "G = min_i max(¬ω_i, G_i) = min(max(0, 50), max(1, 50), max(1, 50), max(2, 75)) = min(50, 50, 50, 75) = 50",
+        "result": "RECOMMENDED",
+        "ranking": 1,
+        "reasoning": "All criteria meet minimum thresholds under non-compensatory logic. Safety at 50 (Moyen) passes the floor (¬ω=0 < 50). Elected as the safe, defensible choice."
+      },
+      {
+        "scenario": "Validation Complète",
+        "ordinal_aggregation": "min(¬ω_i, g_i) aggregation",
+        "computation": "G = min_i max(¬ω_i, G_i) = min(max(0, 100), max(1, 20), max(1, 40), max(2, 50)) = min(100, 20, 40, 50) = 20",
+        "result": "RANKED 2nd",
+        "reasoning": "Time-to-market (20) becomes the bottleneck under non-compensatory logic. Safety excellence cannot compensate for delayed market entry when ω_time = 'Important' (2). A rational choice but not the top recommendation."
+      }
+    ],
+    "key_insight": "Divergence: Weighted-average ranks Comprehensive 1st, Balanced 3rd. Aura ranks Balanced 1st, Comprehensive 2nd, and ELIMINATES Fast Launch entirely. The non-compensatory guarantee prevents recommending an option with a critical failure (safety = 0) even when compensating strengths (time-to-market, cost) pull the weighted average upward.",
+    "business_context": "In regulated industries (medical, pharma, aerospace), a safety failure is disqualifying—period. No amount of speed or cost savings can justify launching a product that hasn't passed its safety gates. Aura's structure naturally enforces this hard constraint. A weighted-average method requires ad-hoc post-hoc filters ('we'll never score safety at 0 if we didn't validate...'), whereas Aura's architecture makes it structural.",
+    "illustrative_labeling": "This example is ILLUSTRATIVE (constructed to highlight method differences) and does NOT reflect real pharmaceutical validation data or timelines. Real examples would use domain-specific impact scales and regulatory thresholds."
+  }
+}

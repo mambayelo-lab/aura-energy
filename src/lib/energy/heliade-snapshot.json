@@ -1,0 +1,931 @@
+{
+  "fictional": true,
+  "notice": "SI et données fictifs — Héliade Énergies n'existe pas.",
+  "source": "heliade-energies-si",
+  "snapshotAt": "2026-10-01T10:48:00Z",
+  "tools": [
+    "referentiel",
+    "planification",
+    "orchestrateur",
+    "temps-reel",
+    "indisponibilites",
+    "historian",
+    "scada-pays",
+    "tso",
+    "journal-quart",
+    "gmao",
+    "monitoring-reseau",
+    "remit"
+  ],
+  "referentiel": {
+    "assets": [
+      {
+        "assetId": "HEL-FR-EOL-01",
+        "nom": "Parc éolien des Crêtes",
+        "pays": "FR",
+        "filiere": "eolien",
+        "puissanceMW": 48,
+        "centre": "CC-FR"
+      },
+      {
+        "assetId": "HEL-FR-PV-02",
+        "nom": "Centrale solaire de la Garrigue",
+        "pays": "FR",
+        "filiere": "solaire",
+        "puissanceMW": 30,
+        "centre": "CC-FR"
+      },
+      {
+        "assetId": "HEL-FR-HYD-03",
+        "nom": "Usine hydroélectrique de Valmorte",
+        "pays": "FR",
+        "filiere": "hydro",
+        "puissanceMW": 85,
+        "centre": "CC-FR"
+      },
+      {
+        "assetId": "HEL-FR-BESS-04",
+        "nom": "Stockage de Saint-Aubrac",
+        "pays": "FR",
+        "filiere": "bess",
+        "puissanceMW": 40,
+        "energieMWh": 80,
+        "centre": "CC-FR"
+      },
+      {
+        "assetId": "HEL-ES-PV-05",
+        "nom": "Planta solar Los Llanos",
+        "pays": "ES",
+        "filiere": "solaire",
+        "puissanceMW": 120,
+        "centre": "CC-ES"
+      },
+      {
+        "assetId": "HEL-ES-HYB-06",
+        "nom": "Híbrido Sierra Clara",
+        "pays": "ES",
+        "filiere": "hybride",
+        "puissanceMW": 60,
+        "energieMWh": 40,
+        "centre": "CC-ES"
+      },
+      {
+        "assetId": "HEL-ES-EOL-07",
+        "nom": "Parque eólico Montebajo",
+        "pays": "ES",
+        "filiere": "eolien",
+        "puissanceMW": 75,
+        "centre": "CC-ES"
+      },
+      {
+        "assetId": "HEL-BE-CCG-08",
+        "nom": "Centrale thermique de Hautrive",
+        "pays": "BE",
+        "filiere": "thermique",
+        "puissanceMW": 420,
+        "centre": "CC-BE"
+      },
+      {
+        "assetId": "HEL-BE-EOL-09",
+        "nom": "Windpark Noordkust",
+        "pays": "BE",
+        "filiere": "eolien",
+        "puissanceMW": 36,
+        "centre": "CC-BE"
+      },
+      {
+        "assetId": "HEL-BE-BESS-10",
+        "nom": "Batterijpark Kempen",
+        "pays": "BE",
+        "filiere": "bess",
+        "puissanceMW": 25,
+        "energieMWh": 50,
+        "centre": "CC-BE"
+      },
+      {
+        "assetId": "HEL-DE-EOL-11",
+        "nom": "Windpark Heidekamm",
+        "pays": "DE",
+        "filiere": "eolien",
+        "puissanceMW": 64,
+        "centre": "CC-DE"
+      },
+      {
+        "assetId": "HEL-DE-BESS-12",
+        "nom": "Speicher Lindenau",
+        "pays": "DE",
+        "filiere": "bess",
+        "puissanceMW": 50,
+        "energieMWh": 100,
+        "centre": "CC-DE"
+      }
+    ],
+    "crosswalk": [
+      {
+        "assetId": "HEL-FR-EOL-01",
+        "scadaTag": "FR-EOL-01-RTU",
+        "gmaoFunctionalLocation": "FL-FR-EOL-01",
+        "tsoResourceCode": "FR-HEL-EOL-01",
+        "statutRapprochement": "OK"
+      },
+      {
+        "assetId": "HEL-FR-PV-02",
+        "scadaTag": "FR-PV-02-RTU",
+        "gmaoFunctionalLocation": "FL-FR-PV-02",
+        "tsoResourceCode": "FR-HEL-PV-02",
+        "statutRapprochement": "OK"
+      },
+      {
+        "assetId": "HEL-FR-HYD-03",
+        "scadaTag": "FR-HYD-03-RTU",
+        "gmaoFunctionalLocation": "FL-FR-HYD-03",
+        "tsoResourceCode": "FR-HEL-HYD-03",
+        "statutRapprochement": "OK"
+      },
+      {
+        "assetId": "HEL-FR-BESS-04",
+        "scadaTag": "FR-BESS-04-RTU",
+        "gmaoFunctionalLocation": "FL-FR-BESS-04",
+        "tsoResourceCode": "FR-HEL-BESS-04",
+        "statutRapprochement": "OK"
+      },
+      {
+        "assetId": "HEL-ES-PV-05",
+        "scadaTag": "ES-PV-05-RTU",
+        "gmaoFunctionalLocation": "FL-ES-PV-05",
+        "tsoResourceCode": "ES-HEL-PV-05",
+        "statutRapprochement": "OK"
+      },
+      {
+        "assetId": "HEL-ES-HYB-06",
+        "scadaTag": "ES-HYB-06-RTU",
+        "gmaoFunctionalLocation": "FL-ES-HYB-06",
+        "tsoResourceCode": "ES-HEL-HYB-06",
+        "statutRapprochement": "OK"
+      },
+      {
+        "assetId": "HEL-ES-EOL-07",
+        "scadaTag": "ES-EOL-07-RTU",
+        "gmaoFunctionalLocation": "FL-ES-EOL-07",
+        "tsoResourceCode": "ES-HEL-EOL-07",
+        "statutRapprochement": "OK"
+      },
+      {
+        "assetId": "HEL-BE-CCG-08",
+        "scadaTag": "BE-CCG-08-RTU",
+        "gmaoFunctionalLocation": "FL-BE-CCG-08",
+        "tsoResourceCode": "BE-HEL-CCG-08",
+        "statutRapprochement": "OK"
+      },
+      {
+        "assetId": "HEL-BE-EOL-09",
+        "scadaTag": "BE-EOL-09-RTU",
+        "gmaoFunctionalLocation": "FL-BE-EOL-09",
+        "tsoResourceCode": "BE-HEL-EOL-09",
+        "statutRapprochement": "OK"
+      },
+      {
+        "assetId": "HEL-BE-BESS-10",
+        "scadaTag": "BE-BESS-10-RTU",
+        "gmaoFunctionalLocation": "FL-BE-BESS-10",
+        "tsoResourceCode": "BE-HEL-BESS-10",
+        "statutRapprochement": "OK"
+      },
+      {
+        "assetId": "HEL-DE-EOL-11",
+        "scadaTag": "DE-EOL-11-RTU",
+        "gmaoFunctionalLocation": "FL-DE-EOL-12",
+        "tsoResourceCode": "DE-HEL-EOL-11",
+        "statutRapprochement": "ECART",
+        "ecart": "La GMAO rattache l'emplacement FL-DE-EOL-12 (inexistant au référentiel) à cet actif ; 3 ordres de travail orphelins."
+      },
+      {
+        "assetId": "HEL-DE-BESS-12",
+        "scadaTag": "DE-BESS-12-RTU",
+        "gmaoFunctionalLocation": "FL-DE-BESS-12",
+        "tsoResourceCode": "DE-HEL-BESS-12",
+        "statutRapprochement": "OK"
+      }
+    ],
+    "sites": [
+      {
+        "siteId": "SITE-FR-EOL-01",
+        "nom": "Parc éolien des Crêtes",
+        "pays": "FR",
+        "assetIds": [
+          "HEL-FR-EOL-01"
+        ],
+        "raccordement": "HTA"
+      },
+      {
+        "siteId": "SITE-FR-PV-02",
+        "nom": "Centrale solaire de la Garrigue",
+        "pays": "FR",
+        "assetIds": [
+          "HEL-FR-PV-02"
+        ],
+        "raccordement": "HTA"
+      },
+      {
+        "siteId": "SITE-FR-HYD-03",
+        "nom": "Usine hydroélectrique de Valmorte",
+        "pays": "FR",
+        "assetIds": [
+          "HEL-FR-HYD-03"
+        ],
+        "raccordement": "HTA"
+      },
+      {
+        "siteId": "SITE-FR-BESS-04",
+        "nom": "Stockage de Saint-Aubrac",
+        "pays": "FR",
+        "assetIds": [
+          "HEL-FR-BESS-04"
+        ],
+        "raccordement": "HTA"
+      },
+      {
+        "siteId": "SITE-ES-PV-05",
+        "nom": "Planta solar Los Llanos",
+        "pays": "ES",
+        "assetIds": [
+          "HEL-ES-PV-05"
+        ],
+        "raccordement": "HTB"
+      },
+      {
+        "siteId": "SITE-ES-HYB-06",
+        "nom": "Híbrido Sierra Clara",
+        "pays": "ES",
+        "assetIds": [
+          "HEL-ES-HYB-06"
+        ],
+        "raccordement": "HTA"
+      },
+      {
+        "siteId": "SITE-ES-EOL-07",
+        "nom": "Parque eólico Montebajo",
+        "pays": "ES",
+        "assetIds": [
+          "HEL-ES-EOL-07"
+        ],
+        "raccordement": "HTA"
+      },
+      {
+        "siteId": "SITE-BE-CCG-08",
+        "nom": "Centrale thermique de Hautrive",
+        "pays": "BE",
+        "assetIds": [
+          "HEL-BE-CCG-08"
+        ],
+        "raccordement": "HTB"
+      },
+      {
+        "siteId": "SITE-BE-EOL-09",
+        "nom": "Windpark Noordkust",
+        "pays": "BE",
+        "assetIds": [
+          "HEL-BE-EOL-09"
+        ],
+        "raccordement": "HTA"
+      },
+      {
+        "siteId": "SITE-BE-BESS-10",
+        "nom": "Batterijpark Kempen",
+        "pays": "BE",
+        "assetIds": [
+          "HEL-BE-BESS-10"
+        ],
+        "raccordement": "HTA"
+      },
+      {
+        "siteId": "SITE-DE-EOL-11",
+        "nom": "Windpark Heidekamm",
+        "pays": "DE",
+        "assetIds": [
+          "HEL-DE-EOL-11"
+        ],
+        "raccordement": "HTA"
+      },
+      {
+        "siteId": "SITE-DE-BESS-12",
+        "nom": "Speicher Lindenau",
+        "pays": "DE",
+        "assetIds": [
+          "HEL-DE-BESS-12"
+        ],
+        "raccordement": "HTA"
+      }
+    ],
+    "countries": [
+      {
+        "pays": "FR",
+        "zoneEntsoe": "10YFR-RTE------C",
+        "gestionnaireReseau": "GRT-FR (fictif)"
+      },
+      {
+        "pays": "ES",
+        "zoneEntsoe": "10YES-REE------0",
+        "gestionnaireReseau": "GRT-ES (fictif)"
+      },
+      {
+        "pays": "BE",
+        "zoneEntsoe": "10YBE----------2",
+        "gestionnaireReseau": "GRT-BE (fictif)"
+      },
+      {
+        "pays": "DE",
+        "zoneEntsoe": "10Y1001A1001A82H",
+        "gestionnaireReseau": "GRT-DE (fictif)"
+      }
+    ],
+    "contracts": [
+      {
+        "contratId": "CTR-PPA-ES05",
+        "type": "PPA",
+        "assetId": "HEL-ES-PV-05",
+        "contrepartie": "Industriel fictif A",
+        "echeance": "2034-12-31"
+      },
+      {
+        "contratId": "CTR-SSY-BE08",
+        "type": "Services système aFRR",
+        "assetId": "HEL-BE-CCG-08",
+        "contrepartie": "GRT-BE (fictif)",
+        "echeance": "2026-12-31"
+      },
+      {
+        "contratId": "CTR-TOLL-DE12",
+        "type": "Tolling BESS",
+        "assetId": "HEL-DE-BESS-12",
+        "contrepartie": "Agrégateur fictif B",
+        "echeance": "2029-06-30"
+      }
+    ]
+  },
+  "planification": {
+    "schedules": [
+      {
+        "programmeId": "PRG-DA-0930-ES05",
+        "assetId": "HEL-ES-PV-05",
+        "marche": "DA",
+        "debut": "2026-10-01T10:00:00Z",
+        "fin": "2026-10-01T11:00:00Z",
+        "puissanceMW": 80,
+        "statut": "VALIDE"
+      },
+      {
+        "programmeId": "PRG-AFRR-1001-BE08",
+        "assetId": "HEL-BE-CCG-08",
+        "marche": "aFRR",
+        "sens": "hausse",
+        "debut": "2026-10-01T14:00:00Z",
+        "fin": "2026-10-01T18:00:00Z",
+        "puissanceMW": 30,
+        "statut": "ENGAGE",
+        "capaciteDisponibleLueMW": 0,
+        "conflitIndisponibilite": "UNAV-0412"
+      },
+      {
+        "programmeId": "PRG-MFRR-1001-FR03",
+        "assetId": "HEL-FR-HYD-03",
+        "marche": "mFRR",
+        "sens": "hausse",
+        "debut": "2026-10-01T16:00:00Z",
+        "fin": "2026-10-01T20:00:00Z",
+        "puissanceMW": 40,
+        "statut": "ENGAGE",
+        "capaciteDisponibleLueMW": 85,
+        "conflitIndisponibilite": null
+      },
+      {
+        "programmeId": "PRG-BESS-1001-DE12",
+        "assetId": "HEL-DE-BESS-12",
+        "marche": "ID",
+        "type": "decharge",
+        "debut": "2026-10-01T17:00:00Z",
+        "fin": "2026-10-01T19:00:00Z",
+        "puissanceMW": 50,
+        "socRequisPct": 100,
+        "statut": "VALIDE",
+        "noteSoc": "décharge : SoC lu doit être ≥ socRequisPct ; charge : SoC lu doit être ≤ socRequisPct"
+      },
+      {
+        "programmeId": "PRG-BESS-1001-FR04",
+        "assetId": "HEL-FR-BESS-04",
+        "marche": "ID",
+        "type": "charge",
+        "debut": "2026-10-01T11:00:00Z",
+        "fin": "2026-10-01T13:00:00Z",
+        "puissanceMW": 40,
+        "socRequisPct": 60,
+        "statut": "VALIDE"
+      },
+      {
+        "programmeId": "PRG-BESS-1001-BE10",
+        "assetId": "HEL-BE-BESS-10",
+        "marche": "aFRR",
+        "sens": "symetrique",
+        "debut": "2026-10-01T08:00:00Z",
+        "fin": "2026-10-01T20:00:00Z",
+        "puissanceMW": 20,
+        "socRequisPct": 50,
+        "statut": "ENGAGE"
+      }
+    ],
+    "markets": [
+      {
+        "marcheId": "DA",
+        "libelle": "Day-ahead (enchère J-1)"
+      },
+      {
+        "marcheId": "ID",
+        "libelle": "Infrajournalier"
+      },
+      {
+        "marcheId": "aFRR",
+        "libelle": "Réserve secondaire automatique (aFRR)"
+      },
+      {
+        "marcheId": "mFRR",
+        "libelle": "Réserve tertiaire manuelle (mFRR)"
+      }
+    ],
+    "engagements": [
+      {
+        "engagementId": "ENG-AFRR-1001-BE08",
+        "programmeId": "PRG-AFRR-1001-BE08",
+        "assetId": "HEL-BE-CCG-08",
+        "marche": "aFRR",
+        "puissanceMW": 30,
+        "debut": "2026-10-01T14:00:00Z",
+        "fin": "2026-10-01T18:00:00Z",
+        "capaciteDisponibleLueMW": 0,
+        "conflitIndisponibilite": "UNAV-0412"
+      },
+      {
+        "engagementId": "ENG-MFRR-1001-FR03",
+        "programmeId": "PRG-MFRR-1001-FR03",
+        "assetId": "HEL-FR-HYD-03",
+        "marche": "mFRR",
+        "puissanceMW": 40,
+        "debut": "2026-10-01T16:00:00Z",
+        "fin": "2026-10-01T20:00:00Z",
+        "capaciteDisponibleLueMW": 85,
+        "conflitIndisponibilite": null
+      },
+      {
+        "engagementId": "ENG-BESS-1001-BE10",
+        "programmeId": "PRG-BESS-1001-BE10",
+        "assetId": "HEL-BE-BESS-10",
+        "marche": "aFRR",
+        "puissanceMW": 20,
+        "debut": "2026-10-01T08:00:00Z",
+        "fin": "2026-10-01T20:00:00Z",
+        "capaciteDisponibleLueMW": null,
+        "conflitIndisponibilite": null
+      }
+    ]
+  },
+  "orchestrateur": {
+    "setpoints": [
+      {
+        "consigneId": "SP-2026-1001",
+        "assetId": "HEL-ES-PV-05",
+        "type": "limitation",
+        "valeurMW": 80,
+        "emiseA": "2026-10-01T10:40:00Z",
+        "origine": "centre",
+        "acquittement": "ABSENT",
+        "delaiAcquittementMaxS": 120,
+        "ageS": 480,
+        "telemesureLueMW": 118,
+        "ecartConsigneTelemesureLuMW": 38,
+        "toleranceMW": 4,
+        "execution": "NON_CONFIRMEE"
+      },
+      {
+        "consigneId": "SP-2026-1002",
+        "assetId": "HEL-FR-HYD-03",
+        "type": "puissance",
+        "valeurMW": 60,
+        "emiseA": "2026-10-01T10:30:00Z",
+        "origine": "centre",
+        "acquittement": "ACQUITTE",
+        "delaiAcquittementMaxS": 120,
+        "ageS": 1080,
+        "telemesureLueMW": 59.4,
+        "ecartConsigneTelemesureLuMW": 0.6,
+        "toleranceMW": 2,
+        "execution": "CONFIRMEE"
+      },
+      {
+        "consigneId": "SP-2026-1003",
+        "assetId": "HEL-FR-BESS-04",
+        "type": "charge",
+        "valeurMW": 40,
+        "emiseA": "2026-10-01T10:45:00Z",
+        "origine": "centre",
+        "acquittement": "ACQUITTE",
+        "delaiAcquittementMaxS": 120,
+        "ageS": 180,
+        "telemesureLueMW": 19.8,
+        "ecartConsigneTelemesureLuMW": 20.2,
+        "toleranceMW": 2,
+        "execution": "PARTIELLE",
+        "limiteLocaleLueMW": 20,
+        "sourceLimiteLocale": "GMAO OT-77120 (onduleur 2 consigné)"
+      }
+    ]
+  },
+  "temps-reel": {
+    "telemetry": [
+      {
+        "assetId": "HEL-ES-PV-05",
+        "puissanceMW": 118,
+        "controlable": true,
+        "qualite": "BONNE",
+        "dureeSansVariationMin": 0,
+        "horodatage": "2026-10-01T10:48:00Z"
+      },
+      {
+        "assetId": "HEL-FR-HYD-03",
+        "puissanceMW": 59.4,
+        "controlable": true,
+        "qualite": "BONNE",
+        "dureeSansVariationMin": 0,
+        "horodatage": "2026-10-01T10:48:00Z"
+      },
+      {
+        "assetId": "HEL-FR-BESS-04",
+        "puissanceMW": -19.8,
+        "socPct": 35,
+        "controlable": true,
+        "qualite": "BONNE",
+        "dureeSansVariationMin": 0,
+        "horodatage": "2026-10-01T10:48:00Z"
+      },
+      {
+        "assetId": "HEL-BE-EOL-09",
+        "puissanceMW": 21.3,
+        "controlable": true,
+        "qualite": "FIGEE",
+        "dureeSansVariationMin": 47,
+        "seuilGelMin": 15,
+        "horodatage": "2026-10-01T10:01:00Z"
+      },
+      {
+        "assetId": "HEL-BE-BESS-10",
+        "puissanceMW": 4.2,
+        "socPct": 52,
+        "controlable": true,
+        "qualite": "BONNE",
+        "dureeSansVariationMin": 0,
+        "horodatage": "2026-10-01T10:48:00Z"
+      },
+      {
+        "assetId": "HEL-DE-BESS-12",
+        "puissanceMW": 0,
+        "socPct": 18,
+        "controlable": true,
+        "qualite": "BONNE",
+        "dureeSansVariationMin": 0,
+        "horodatage": "2026-10-01T10:48:00Z"
+      },
+      {
+        "assetId": "HEL-DE-EOL-11",
+        "puissanceMW": 41.7,
+        "controlable": true,
+        "qualite": "BONNE",
+        "dureeSansVariationMin": 0,
+        "horodatage": "2026-10-01T10:48:00Z"
+      },
+      {
+        "assetId": "HEL-ES-EOL-07",
+        "puissanceMW": null,
+        "controlable": false,
+        "qualite": "INDISPONIBLE",
+        "dureeSansVariationMin": null,
+        "horodatage": "2026-10-01T10:42:00Z",
+        "note": "Lien CC-ES ↔ RTU interrompu"
+      }
+    ]
+  },
+  "indisponibilites": {
+    "unavailabilities": [
+      {
+        "indispoId": "UNAV-0412",
+        "assetId": "HEL-BE-CCG-08",
+        "nature": "fortuite",
+        "cause": "Déclenchement turbine à gaz (alarme vibrations)",
+        "debut": "2026-10-01T09:35:00Z",
+        "finEstimee": "2026-10-02T06:00:00Z",
+        "capaciteDisponibleMW": 0,
+        "declareeA": "2026-10-01T09:41:00Z",
+        "engagementsImpactes": [
+          "PRG-AFRR-1001-BE08"
+        ]
+      },
+      {
+        "indispoId": "UNAV-0413",
+        "assetId": "HEL-FR-EOL-01",
+        "nature": "planifiee",
+        "cause": "Maintenance annuelle éolienne E3",
+        "debut": "2026-10-03T06:00:00Z",
+        "finEstimee": "2026-10-03T18:00:00Z",
+        "capaciteDisponibleMW": 40,
+        "declareeA": "2026-09-12T08:00:00Z",
+        "engagementsImpactes": []
+      }
+    ]
+  },
+  "historian": {
+    "tags": [
+      {
+        "tag": "HEL-ES-PV-05.P_MW",
+        "valeur": 118,
+        "qualite": "GOOD",
+        "horodatage": "2026-10-01T10:48:00Z"
+      },
+      {
+        "tag": "HEL-FR-HYD-03.P_MW",
+        "valeur": 59.4,
+        "qualite": "GOOD",
+        "horodatage": "2026-10-01T10:48:00Z"
+      },
+      {
+        "tag": "HEL-FR-BESS-04.P_MW",
+        "valeur": -19.8,
+        "qualite": "GOOD",
+        "horodatage": "2026-10-01T10:48:00Z"
+      },
+      {
+        "tag": "HEL-BE-EOL-09.P_MW",
+        "valeur": 21.3,
+        "qualite": "UNCERTAIN_LAST_USABLE",
+        "horodatage": "2026-10-01T10:01:00Z"
+      },
+      {
+        "tag": "HEL-BE-BESS-10.P_MW",
+        "valeur": 4.2,
+        "qualite": "GOOD",
+        "horodatage": "2026-10-01T10:48:00Z"
+      },
+      {
+        "tag": "HEL-DE-BESS-12.P_MW",
+        "valeur": 0,
+        "qualite": "GOOD",
+        "horodatage": "2026-10-01T10:48:00Z"
+      },
+      {
+        "tag": "HEL-DE-EOL-11.P_MW",
+        "valeur": 41.7,
+        "qualite": "GOOD",
+        "horodatage": "2026-10-01T10:48:00Z"
+      }
+    ]
+  },
+  "scada-pays": {
+    "links": [
+      {
+        "lienId": "LNK-CC-FR",
+        "centre": "CC-FR",
+        "pays": "FR",
+        "protocole": "IEC 60870-5-104",
+        "etat": "UP",
+        "modeDegrade": false,
+        "dernierEchange": "2026-10-01T10:48:00Z"
+      },
+      {
+        "lienId": "LNK-CC-ES",
+        "centre": "CC-ES",
+        "pays": "ES",
+        "protocole": "IEC 60870-5-104",
+        "etat": "DOWN",
+        "modeDegrade": true,
+        "depuis": "2026-10-01T10:42:00Z",
+        "liaisonSecours": "ACTIVE_LECTURE_SEULE",
+        "actifsConcernes": [
+          "HEL-ES-EOL-07",
+          "HEL-ES-HYB-06"
+        ]
+      },
+      {
+        "lienId": "LNK-CC-BE",
+        "centre": "CC-BE",
+        "pays": "BE",
+        "protocole": "IEC 60870-5-104",
+        "etat": "UP",
+        "modeDegrade": false,
+        "dernierEchange": "2026-10-01T10:48:00Z"
+      },
+      {
+        "lienId": "LNK-CC-DE",
+        "centre": "CC-DE",
+        "pays": "DE",
+        "protocole": "OPC UA",
+        "etat": "UP",
+        "modeDegrade": false,
+        "dernierEchange": "2026-10-01T10:48:00Z"
+      }
+    ],
+    "centers": [
+      {
+        "centreId": "CC-CENTRAL",
+        "nom": "Centre de conduite central",
+        "role": "central",
+        "pays": null
+      },
+      {
+        "centreId": "CC-FR",
+        "nom": "Centre de conduite FR",
+        "role": "pays",
+        "pays": "FR",
+        "rattacheA": "CC-CENTRAL"
+      },
+      {
+        "centreId": "CC-ES",
+        "nom": "Centre de conduite ES",
+        "role": "pays",
+        "pays": "ES",
+        "rattacheA": "CC-CENTRAL"
+      },
+      {
+        "centreId": "CC-BE",
+        "nom": "Centre de conduite BE",
+        "role": "pays",
+        "pays": "BE",
+        "rattacheA": "CC-CENTRAL"
+      },
+      {
+        "centreId": "CC-DE",
+        "nom": "Centre de conduite DE",
+        "role": "pays",
+        "pays": "DE",
+        "rattacheA": "CC-CENTRAL"
+      }
+    ]
+  },
+  "tso": {
+    "messages": [
+      {
+        "messageId": "TSO-ACT-55120",
+        "tso": "GRT-BE (fictif)",
+        "type": "activation-aFRR",
+        "resourceCode": "BE-HEL-CCG-08",
+        "recuA": "2026-10-01T10:44:00Z",
+        "statut": "RECU",
+        "acquittement": "EN_ATTENTE"
+      },
+      {
+        "messageId": "TSO-PRG-55101",
+        "tso": "GRT-FR (fictif)",
+        "type": "programme-DA",
+        "resourceCode": "FR-HEL-HYD-03",
+        "recuA": "2026-09-30T12:10:00Z",
+        "statut": "ACCEPTE",
+        "acquittement": "OK"
+      }
+    ]
+  },
+  "journal-quart": {
+    "entries": [
+      {
+        "entreeId": "JQ-CC-BE-8812",
+        "centre": "CC-BE",
+        "a": "2026-10-01T09:38:00Z",
+        "auteur": "Opérateur de quart B",
+        "texte": "Déclenchement TG Hautrive, appel astreinte. Indispo saisie 09:41."
+      },
+      {
+        "entreeId": "JQ-CC-ES-4410",
+        "centre": "CC-ES",
+        "a": "2026-10-01T10:43:00Z",
+        "auteur": "Opérateur de quart ES",
+        "texte": "Perte lien 104 vers Montebajo et Sierra Clara, bascule secours lecture seule."
+      },
+      {
+        "entreeId": "JQ-CC-FR-2207",
+        "centre": "CC-FR",
+        "a": "2026-10-01T07:05:00Z",
+        "auteur": "Opérateur de quart FR",
+        "texte": "Onduleur 2 Saint-Aubrac consigné (OT-77120) : limite locale 20 MW."
+      }
+    ],
+    "operators": [
+      {
+        "operateurId": "OP-B",
+        "libelle": "Opérateur de quart B",
+        "centreId": "CC-BE"
+      },
+      {
+        "operateurId": "OP-ES",
+        "libelle": "Opérateur de quart ES",
+        "centreId": "CC-ES"
+      },
+      {
+        "operateurId": "OP-FR",
+        "libelle": "Opérateur de quart FR",
+        "centreId": "CC-FR"
+      },
+      {
+        "operateurId": "DISP-C",
+        "libelle": "Dispatcher central",
+        "centreId": "CC-CENTRAL"
+      }
+    ]
+  },
+  "gmao": {
+    "workOrders": [
+      {
+        "otId": "OT-77120",
+        "emplacement": "FL-FR-BESS-04",
+        "assetId": "HEL-FR-BESS-04",
+        "statut": "EN_COURS",
+        "contrainte": "Puissance limitée à 20 MW (onduleur 2 consigné)",
+        "limiteMW": 20,
+        "fin": "2026-10-01T18:00:00Z"
+      },
+      {
+        "otId": "OT-77131",
+        "emplacement": "FL-DE-EOL-12",
+        "assetId": null,
+        "statut": "PLANIFIE",
+        "contrainte": "Inspection pales",
+        "limiteMW": null,
+        "fin": "2026-10-08T16:00:00Z"
+      },
+      {
+        "otId": "OT-77132",
+        "emplacement": "FL-DE-EOL-12",
+        "assetId": null,
+        "statut": "PLANIFIE",
+        "contrainte": "Graissage pitch",
+        "limiteMW": null,
+        "fin": "2026-10-09T16:00:00Z"
+      },
+      {
+        "otId": "OT-77133",
+        "emplacement": "FL-DE-EOL-12",
+        "assetId": null,
+        "statut": "PLANIFIE",
+        "contrainte": "Contrôle balisage",
+        "limiteMW": null,
+        "fin": "2026-10-10T16:00:00Z"
+      }
+    ]
+  },
+  "monitoring-reseau": {
+    "equipment": [
+      {
+        "equipementId": "GW-ES-01",
+        "type": "passerelle-pays",
+        "pays": "ES",
+        "etat": "INJOIGNABLE",
+        "depuis": "2026-10-01T10:42:00Z"
+      },
+      {
+        "equipementId": "GW-FR-01",
+        "type": "passerelle-pays",
+        "pays": "FR",
+        "etat": "OK"
+      },
+      {
+        "equipementId": "GW-BE-01",
+        "type": "passerelle-pays",
+        "pays": "BE",
+        "etat": "OK"
+      },
+      {
+        "equipementId": "GW-DE-01",
+        "type": "passerelle-pays",
+        "pays": "DE",
+        "etat": "OK"
+      }
+    ]
+  },
+  "remit": {
+    "umm": [
+      {
+        "ummId": null,
+        "indispoId": "UNAV-0412",
+        "assetId": "HEL-BE-CCG-08",
+        "statut": "NON_PUBLIEE",
+        "echeancePublication": "2026-10-01T10:35:00Z",
+        "echeanceDepassee": true,
+        "retardLuMin": 13,
+        "regle": "Publication « sans délai » et au plus tard 1 h après l'événement (règle interne Héliade, fictive)"
+      },
+      {
+        "ummId": "UMM-HEL-2026-0388",
+        "indispoId": "UNAV-0413",
+        "assetId": "HEL-FR-EOL-01",
+        "statut": "PUBLIEE",
+        "echeancePublication": "2026-09-12T09:00:00Z",
+        "echeanceDepassee": false,
+        "retardLuMin": 0,
+        "publieeA": "2026-09-12T08:20:00Z"
+      }
+    ]
+  }
+}

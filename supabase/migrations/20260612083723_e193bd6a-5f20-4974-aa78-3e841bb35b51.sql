@@ -1,0 +1,1 @@
+ALTER VIEW public.project_portfolio_summary SET (security_invoker = on);

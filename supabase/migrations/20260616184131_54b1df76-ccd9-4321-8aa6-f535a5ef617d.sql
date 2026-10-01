@@ -1,0 +1,1 @@
+DELETE FROM public.source_systems WHERE slug IN ('skycrm','nexerp','webstore');
