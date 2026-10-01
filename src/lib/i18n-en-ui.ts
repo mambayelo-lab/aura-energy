@@ -180,7 +180,7 @@ Object.assign(EN_UI, { "Aucun champ fiable": "No reliable field" });
 
 // Rapports PDF, note au comité et e-mails.
 Object.assign(EN_UI, {
-  "AURA DÉCIDER · RAPPORT DE DÉCISION": "AURA DECIDE · DECISION REPORT", "Question et contexte": "Question and context", "Décision retenue": "Chosen decision", "Classement Bora": "Bora ranking",
+  "AURA DÉCIDER · RAPPORT DE DÉCISION": "AURA DECIDE · DECISION REPORT", "Question et contexte": "Question and context", "Décision retenue": "Chosen decision", "Classement des options": "Options ranking",
   "Critères (importance)": "Criteria (importance)", "Résultats clés": "Key results", "Vert : effet favorable · rouge : défavorable · épaisseur : niveau L, M, H.": "Green: favourable effect · red: unfavourable · thickness: level L, M, H.",
   "AURA SUPPLY CHAIN · NOTE AU COMITÉ": "AURA SUPPLY CHAIN · COMMITTEE NOTE", "FAITS OBSERVÉS": "OBSERVED FACTS", "CHAÎNE DE CAUSALITÉ": "CAUSAL CHAIN", "CAUSES": "CAUSES", "DÉCISION": "DECISION",
   "LECTURE": "READING", "OPTIONS": "OPTIONS", "QUESTION AU COMITÉ": "QUESTION FOR THE COMMITTEE", "ensemble des données": "all data",

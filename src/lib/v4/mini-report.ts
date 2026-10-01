@@ -59,7 +59,7 @@ export function miniReport(session: AtelierSession, author: string, now = new Da
     context: session.contextRaw || undefined, origin: session.alertLabel ?? (session.alertId ? `Alerte ${session.alertId}` : undefined),
     options: session.scenarios.map(s => s.label),
     ranking: ranking.map(r => ({ rank: r.rank, label: r.label, profile: profileText(r) })),
-    decision: retained ? { label: retained.label, justification: session.decisionRecord?.conditions?.join(" ; ") || session.tieBreak?.rationale || session.auraRecommendation || (ranking[0]?.label === retained.label ? "Premier du classement Bora avec l'attitude choisie." : "Choix de l'utilisateur, documenté dans la session.") } : undefined,
+    decision: retained ? { label: retained.label, justification: session.decisionRecord?.conditions?.join(" ; ") || session.tieBreak?.rationale || session.auraRecommendation || (ranking[0]?.label === retained.label ? "Premier du classement avec l'attitude choisie." : "Choix de l'utilisateur, documenté dans la session.") } : undefined,
     indicators: krs.length ? krs.map(k => `${k.label} : ${k.start} → cible ${k.target} ${k.unit} au ${k.deadline}${k.owner ? ` (${k.owner})` : ""}`) : leaves.slice(0, 6).map(c => c.label),
     solidity: solidity(session),
   };

@@ -36,6 +36,7 @@ export async function readHeliade(baseUrl = (import.meta as { env?: Record<strin
 export const HELIADE_PROTOCOLS: Record<string, string> = {
   referentiel: "REST /api/tools/referentiel · MCP get_dataset", planification: "REST · Kafka heliade.planification.schedules (AsyncAPI)",
   orchestrateur: "REST · Kafka heliade.orchestrateur.setpoints", "temps-reel": "MQTT heliade/{pays}/{actif}/telemetry · REST",
-  indisponibilites: "REST", historian: "OPC UA (passerelle REST /opcua/read)", "scada-pays": "IEC 60870-5-104 (passerelle REST /iec104/{lien})",
+  indisponibilites: "REST", bms: "Modbus TCP (passerelle REST)", hydro: "REST · OPC UA", thermique: "REST", equilibre: "REST", performance: "REST",
+  "conformite-reseau": "REST", "cyber-ot": "Syslog (passerelle REST)", historian: "OPC UA (passerelle REST /opcua/read)", "scada-pays": "IEC 60870-5-104 (passerelle REST /iec104/{lien})",
   tso: "SOAP 1.1 /tso/soap", "journal-quart": "REST", gmao: "REST", "monitoring-reseau": "REST · MQTT", remit: "REST",
 };

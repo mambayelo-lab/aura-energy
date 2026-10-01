@@ -15,6 +15,13 @@
     "journal-quart",
     "gmao",
     "monitoring-reseau",
+    "bms",
+    "hydro",
+    "thermique",
+    "equilibre",
+    "performance",
+    "conformite-reseau",
+    "cyber-ot",
     "remit"
   ],
   "referentiel": {
@@ -775,7 +782,9 @@
         "resourceCode": "BE-HEL-CCG-08",
         "recuA": "2026-10-01T10:44:00Z",
         "statut": "RECU",
-        "acquittement": "EN_ATTENTE"
+        "acquittement": "EN_ATTENTE",
+        "ageS": 240,
+        "delaiAcquittementMaxS": 60
       },
       {
         "messageId": "TSO-PRG-55101",
@@ -925,6 +934,168 @@
         "echeanceDepassee": false,
         "retardLuMin": 0,
         "publieeA": "2026-09-12T08:20:00Z"
+      }
+    ]
+  },
+  "bms": {
+    "batteries": [
+      {
+        "assetId": "HEL-FR-BESS-04",
+        "socPct": 35,
+        "sohPct": 91,
+        "sohSeuilGarantiePct": 80,
+        "tempCelluleMaxC": 34,
+        "seuilAlarmeTempC": 55,
+        "alarmeGaz": false,
+        "energieDisponibleLueMWh": 28,
+        "energieRequiseEngagementLueMWh": null
+      },
+      {
+        "assetId": "HEL-BE-BESS-10",
+        "socPct": 52,
+        "sohPct": 77,
+        "sohSeuilGarantiePct": 80,
+        "tempCelluleMaxC": 31,
+        "seuilAlarmeTempC": 55,
+        "alarmeGaz": false,
+        "energieDisponibleLueMWh": 26,
+        "energieRequiseEngagementLueMWh": 10
+      },
+      {
+        "assetId": "HEL-DE-BESS-12",
+        "socPct": 18,
+        "sohPct": 94,
+        "sohSeuilGarantiePct": 80,
+        "tempCelluleMaxC": 61,
+        "seuilAlarmeTempC": 55,
+        "alarmeGaz": true,
+        "rack": "R07",
+        "energieDisponibleLueMWh": 18,
+        "energieRequiseEngagementLueMWh": 25,
+        "engagement": "FCR (énergie requise pour la durée LER lue au contrat)"
+      }
+    ]
+  },
+  "hydro": {
+    "ouvrages": [
+      {
+        "ouvrageId": "OUV-VALMORTE",
+        "assetId": "HEL-FR-HYD-03",
+        "debitRestitueLuM3s": 0.9,
+        "debitReserveLuM3s": 1.4,
+        "coteLueM": 612.3,
+        "coteMinExploitationM": 615,
+        "coteMaxM": 642,
+        "source": "station limnimétrique aval (fictive)"
+      }
+    ]
+  },
+  "thermique": {
+    "unites": [
+      {
+        "assetId": "HEL-BE-CCG-08",
+        "demarragesLus": 118,
+        "quotaDemarragesLu": 120,
+        "demarragesRestantsLus": 2,
+        "periode": "2026",
+        "noxLuMgNm3": 62,
+        "vleNoxMgNm3": 50,
+        "depassementDepuisMin": 95,
+        "demarragesPlanifiesLus": 4
+      }
+    ]
+  },
+  "equilibre": {
+    "perimetres": [
+      {
+        "perimetreId": "PE-HEL-BE",
+        "pays": "BE",
+        "ecartLuMWh": -46,
+        "seuilInterneMWh": 20,
+        "periode": "2026-10-01T10:00Z/11:00Z",
+        "prixDesequilibreLuEurMWh": 312
+      },
+      {
+        "perimetreId": "PE-HEL-FR",
+        "pays": "FR",
+        "ecartLuMWh": 4,
+        "seuilInterneMWh": 20,
+        "periode": "2026-10-01T10:00Z/11:00Z",
+        "prixDesequilibreLuEurMWh": 88
+      }
+    ]
+  },
+  "performance": {
+    "actifs": [
+      {
+        "assetId": "HEL-ES-PV-05",
+        "productibleAttenduLuMWh": 412,
+        "productionLueMWh": 318,
+        "ecartLuPct": -22.8,
+        "tolerancePct": 10,
+        "causeProbableLue": "Onduleurs 4 et 7 en défaut (journal SCADA)",
+        "disponibiliteLuePct": 97.1,
+        "disponibiliteGarantiePct": 97
+      },
+      {
+        "assetId": "HEL-DE-EOL-11",
+        "productibleAttenduLuMWh": 980,
+        "productionLueMWh": 952,
+        "ecartLuPct": -2.9,
+        "tolerancePct": 10,
+        "disponibiliteLuePct": 94.2,
+        "disponibiliteGarantiePct": 97,
+        "referentiel": "IEC 61400-26 (disponibilité temporelle, fournie par l'outil)"
+      }
+    ]
+  },
+  "conformite-reseau": {
+    "raccordements": [
+      {
+        "assetId": "HEL-ES-PV-05",
+        "modeTensionLu": "FACTEUR_PUISSANCE_FIXE",
+        "modeTensionExigeLu": "REGULATION_TENSION",
+        "protectionSurtensionLuePu": 1.1,
+        "seuilCodeReseauPu": 1.1
+      },
+      {
+        "assetId": "HEL-ES-EOL-07",
+        "modeTensionLu": "REGULATION_TENSION",
+        "modeTensionExigeLu": "REGULATION_TENSION",
+        "protectionSurtensionLuePu": 1.08,
+        "seuilCodeReseauPu": 1.1
+      }
+    ],
+    "prequalifications": [
+      {
+        "assetId": "HEL-FR-HYD-03",
+        "produit": "mFRR",
+        "statut": "VALIDE",
+        "echeance": "2027-05-31",
+        "echeanceDepassee": false
+      },
+      {
+        "assetId": "HEL-BE-BESS-10",
+        "produit": "aFRR",
+        "statut": "EXPIREE",
+        "echeance": "2026-09-30",
+        "echeanceDepassee": true,
+        "engagementActif": "PRG-AFRR-1001-BE10"
+      }
+    ]
+  },
+  "cyber-ot": {
+    "evenements": [
+      {
+        "evenementId": "SEC-OT-0931",
+        "equipementId": "GW-DE-01",
+        "type": "Connexion distante hors fenêtre de maintenance (compte de service inconnu)",
+        "gravite": "HAUTE",
+        "statut": "NON_QUALIFIE",
+        "detecteA": "2026-10-01T09:10:00Z",
+        "echeanceAlertePrecoce": "2026-10-02T09:10:00Z",
+        "alertePrecoceEnvoyee": false,
+        "significatifLu": true
       }
     ]
   }

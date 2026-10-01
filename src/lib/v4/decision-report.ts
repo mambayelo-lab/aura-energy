@@ -48,7 +48,7 @@ export function decisionReport(session: AtelierSession, judgment?: BackwardResul
     ranking: ranking.map(r => ({ rank: r.rank, label: r.label, profile: profileText(r) })),
     space, move,
     judgment: judgment ? backwardSentence(judgment) : undefined,
-    decision: retained ? { label: retained.label, date: new Date(f?.decidedAt ?? now).toLocaleDateString("fr-FR"), justification: session.decisionRecord?.conditions?.join(" ; ") || session.tieBreak?.rationale || session.auraRecommendation || (ranking[0]?.label === retained.label ? "Premier du classement Bora." : "Choix de l'utilisateur.") } : undefined,
+    decision: retained ? { label: retained.label, date: new Date(f?.decidedAt ?? now).toLocaleDateString("fr-FR"), justification: session.decisionRecord?.conditions?.join(" ; ") || session.tieBreak?.rationale || session.auraRecommendation || (ranking[0]?.label === retained.label ? "Premier du classement." : "Choix de l'utilisateur.") } : undefined,
     keyResults: (f?.keyResults ?? []).map(kr => ({ label: kr.label, start: kr.start, target: kr.target, current: kr.current, unit: kr.unit, deadline: kr.deadline, owner: kr.owner, status: krStatus(kr, f!.decidedAt, now.getTime()), progress: krProgress(kr) })),
     reviewDate: f?.reviewDate,
   };
@@ -86,7 +86,7 @@ export async function decisionReportPdf(r: DecisionReport): Promise<Uint8Array> 
   para(r.title, 17, bold);
   y -= 2;
   if (r.origin) para(`Origine : ${r.origin}`, 10, font, MUTED);
-  para(`Attitude face au risque : ${r.attitude} · classement du moteur de décision Bora (thèse Lô 2013)`, 9.5, font, MUTED);
+  para(`Attitude face au risque : ${r.attitude} · classement ordinal Aura Décider`, 9.5, font, MUTED);
   if (r.context) { title("Question et contexte"); for (const line of r.context.slice(0, 1200).split(/\n+/)) para(line, 10); }
 
   if (r.decision) {
@@ -99,7 +99,7 @@ export async function decisionReportPdf(r: DecisionReport): Promise<Uint8Array> 
     para(`Justification : ${r.decision.justification}`, 9.5);
   }
 
-  title("Classement Bora");
+  title("Classement des options");
   r.ranking.forEach((o, i) => {
     ensure(20);
     const first = i === 0;

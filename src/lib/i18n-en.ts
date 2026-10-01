@@ -252,7 +252,7 @@ EN_PATTERNS.unshift(
   [/^Rapport de décision — (.+)$/, (m, t) => `Decision report — ${t(m[1])}`],
   [/^Comité — (.+)$/, (m, t) => `Committee — ${W(m[1], t)}`],
   [/^Origine : (.+)$/, (m, t) => `Origin: ${t(m[1])}`],
-  [/^Attitude face au risque : (\S+) · classement du moteur de décision Bora \(thèse Lô 2013\)$/, m => `Risk attitude: ${m[1] === "pessimiste" || m[1] === "Pessimiste" ? "cautious" : "bold"} · ranking by the Bora decision engine (Lô thesis, 2013)`],
+  [/^Attitude face au risque : (\S+) · classement ordinal Aura Décider$/, m => `Risk attitude: ${m[1] === "pessimiste" || m[1] === "Pessimiste" ? "cautious" : "bold"} · Aura Decide ordinal ranking`],
   [/^le (.+)$/, m => `on ${m[1]}`],
   [/^Justification : (.+)$/, (m, t) => `Rationale: ${t(m[1])}`],
   [/^Revue de la décision : (.+)$/, m => `Decision review: ${m[1]}`],

@@ -81,7 +81,7 @@ function demande(v: ArgusVocab): string[] {
     ...(bw.length ? [`${bw.filter(r => (num(r.ratio) ?? 0) > 1.5).length} article(s) où les commandes varient plus d'une fois et demie plus que la demande (Aura · CoupDeFouet).`] : []),
   ];
 }
-const HORS_CALCUL = "Aura lit et raisonne, il ne calcule pas : il compare les options posées (évaluation ordinale Bora) ; pas de moteur d'optimisation. Coûts et effets : à lire dans le SI ou à confirmer avec le client.";
+const HORS_CALCUL = "Aura lit et raisonne, il ne calcule pas : il compare les options posées (évaluation ordinale) ; pas de moteur d'optimisation. Coûts et effets : à lire dans le SI ou à confirmer avec le client.";
 
 export const STRATEGIC_DECISIONS: StrategicDecision[] = [
   { id: "STRAT-ENTREPOT", titre: "Ouvrir ou fermer un entrepôt ou un hub", question: "Faut-il ouvrir un hub, fermer un entrepôt ou garder le réseau actuel ?", options: ["Garder le réseau actuel", "Ouvrir un hub régional", "Fermer ou regrouper un entrepôt"], indicateur: "Délai de livraison client", faits: v => v ? [...sites(v), ...flux(v), ...stockValeur(v), HORS_CALCUL] : [HORS_CALCUL] },

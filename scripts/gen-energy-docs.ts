@@ -7,7 +7,7 @@ import { DECIDER_PROFILES, ENERGY_QUESTIONNAIRE } from "../src/lib/energy/studio
 const head = "> SI et données fictifs (Héliade Énergies). Aucun lien avec un opérateur réel. Fichier généré par `npx tsx scripts/gen-energy-docs.ts`.\n\n";
 writeFileSync("docs/energie/REGLES-CAUSALES.md", "# Catalogue des règles causales Énergie\n\n" + head +
   "Chaque règle compare des valeurs **lues** dans le SI ; Aura ne recalcule rien et n'émet aucune consigne. Les leviers sont des options soumises à Décider.\n\n" +
-  ENERGY_RULES.map(r => `## ${r.id} — ${r.label}\n\n- **Gravité** : ${r.gravite}\n- **SI** ${r.si}\n- **ALORS** ${r.alors}\n- **Données lues** : ${r.donneesLues.map(d => "`" + d + "`").join(", ")}\n- **Objets** : ${r.objets.join(", ")}\n- **Décideur** : ${r.decideur}\n- **Question de décision** : ${r.decisionQuestion}\n- **Leviers Décider** : ${r.leviers.join(" ; ")}\n`).join("\n"));
+  ENERGY_RULES.map(r => `## ${r.id} — ${r.label}\n\n- **Gravité** : ${r.gravite}\n${r.reference ? `- **Source** : ${r.reference}\n` : ""}${r.options ? `- **Options Décider** : ${r.options.join(" / ")}\n- **Indicateurs** : ${r.indicateurs?.join(", ")}\n` : ""}- **SI** ${r.si}\n- **ALORS** ${r.alors}\n- **Données lues** : ${r.donneesLues.map(d => "`" + d + "`").join(", ")}\n- **Objets** : ${r.objets.join(", ")}\n- **Décideur** : ${r.decideur}\n- **Question de décision** : ${r.decisionQuestion}\n- **Leviers Décider** : ${r.leviers.join(" ; ")}\n`).join("\n"));
 const rules = ENERGY_RULES.map(r => r.id);
 writeFileSync("docs/energie/MATRICE-ALERTES-DONNEES.md", "# Matrice alertes × données\n\n" + head +
   `| Outil Héliade | ${rules.join(" | ")} |\n|---|${rules.map(() => ":-:").join("|")}|\n` +

@@ -19,6 +19,12 @@
 | Contrat | `contratId` | referentiel | PPA, services système, tolling. |
 | Lien centre–pays | `lienId` | scada-pays | Liaison de téléconduite et son mode dégradé. |
 | Ordre de travail | `otId` | gmao | Maintenance et contraintes locales. |
+| État batterie | `assetId` | bms | SoC, SoH, températures, alarme gaz, énergie disponible d'un stockage. |
+| Ouvrage hydraulique | `ouvrageId` | hydro | Retenue, cotes, débit restitué et débit réservé. |
+| Périmètre d'équilibre | `perimetreId` | equilibre | Regroupement d'actifs responsable des écarts de programme. |
+| Exigence de raccordement | `assetId` | conformite-reseau | Mode de réglage de tension et réglages de protection exigés. |
+| Préqualification | `assetId+produit` | conformite-reseau | Aptitude aFRR/mFRR/FCR et échéance. |
+| Événement de cybersécurité OT | `evenementId` | cyber-ot | Événement de sécurité OT, qualification et échéance de notification. |
 
 ## Relations
 
@@ -39,3 +45,9 @@
 - LienCentrePays *relie* CentreDeConduite
 - OrdreDeTravail *contraint* Actif
 - Contrat *engage* Actif
+- EtatBatterie *décrit* Actif
+- OuvrageHydraulique *alimente* Actif
+- PerimetreEquilibre *regroupe* Actif
+- ExigenceRaccordement *s'impose à* Actif
+- Prequalification *autorise* EngagementServicesSysteme
+- EvenementCyber *touche* LienCentrePays

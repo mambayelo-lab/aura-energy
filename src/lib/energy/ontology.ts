@@ -16,6 +16,12 @@ export const ENERGY_OBJECTS: EnergyObject[] = [
   { id: "Contrat", libelle: "Contrat", cle: "contratId", maitre: "referentiel", description: "PPA, services système, tolling." },
   { id: "LienCentrePays", libelle: "Lien centre–pays", cle: "lienId", maitre: "scada-pays", description: "Liaison de téléconduite et son mode dégradé." },
   { id: "OrdreDeTravail", libelle: "Ordre de travail", cle: "otId", maitre: "gmao", description: "Maintenance et contraintes locales." },
+  { id: "EtatBatterie", libelle: "État batterie", cle: "assetId", maitre: "bms", description: "SoC, SoH, températures, alarme gaz, énergie disponible d'un stockage." },
+  { id: "OuvrageHydraulique", libelle: "Ouvrage hydraulique", cle: "ouvrageId", maitre: "hydro", description: "Retenue, cotes, débit restitué et débit réservé." },
+  { id: "PerimetreEquilibre", libelle: "Périmètre d'équilibre", cle: "perimetreId", maitre: "equilibre", description: "Regroupement d'actifs responsable des écarts de programme." },
+  { id: "ExigenceRaccordement", libelle: "Exigence de raccordement", cle: "assetId", maitre: "conformite-reseau", description: "Mode de réglage de tension et réglages de protection exigés." },
+  { id: "Prequalification", libelle: "Préqualification", cle: "assetId+produit", maitre: "conformite-reseau", description: "Aptitude aFRR/mFRR/FCR et échéance." },
+  { id: "EvenementCyber", libelle: "Événement de cybersécurité OT", cle: "evenementId", maitre: "cyber-ot", description: "Événement de sécurité OT, qualification et échéance de notification." },
 ];
 export const ENERGY_RELATIONS: [string, string, string][] = [
   ["Actif", "est situé sur", "Site"], ["Site", "est dans", "Pays"], ["Actif", "est conduit par", "CentreDeConduite"],
@@ -24,4 +30,6 @@ export const ENERGY_RELATIONS: [string, string, string][] = [
   ["Consigne", "s'applique à", "Actif"], ["Consigne", "met en œuvre", "Programme"], ["Telemesure", "mesure", "Actif"],
   ["Indisponibilite", "affecte", "Actif"], ["Indisponibilite", "impacte", "EngagementServicesSysteme"], ["MessageREMIT", "publie", "Indisponibilite"],
   ["LienCentrePays", "relie", "CentreDeConduite"], ["OrdreDeTravail", "contraint", "Actif"], ["Contrat", "engage", "Actif"],
+  ["EtatBatterie", "décrit", "Actif"], ["OuvrageHydraulique", "alimente", "Actif"], ["PerimetreEquilibre", "regroupe", "Actif"],
+  ["ExigenceRaccordement", "s'impose à", "Actif"], ["Prequalification", "autorise", "EngagementServicesSysteme"], ["EvenementCyber", "touche", "LienCentrePays"],
 ];

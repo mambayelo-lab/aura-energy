@@ -14,6 +14,13 @@
 - **Q8** Où lire l'état des liens centre–pays et le passage en mode dégradé ? *(alimente E6)*
 - **Q9** Les contraintes locales (GMAO, journal de quart) sont-elles exposées en MW par actif ? *(alimente E7)*
 - **Q10** Par quel protocole chaque outil est-il accessible (REST, Kafka, MQTT, IEC 104, OPC UA, SOAP, MCP) et avec quelle authentification ? *(alimente E1, E2, E3, E4, E5, E6, E7, E8)*
+- **Q11** Le BMS/EMS expose-t-il SoC, SoH, températures, alarme gaz et énergie disponible vs énergie requise par l'engagement ? *(alimente E10, E11, E12)*
+- **Q12** Où lire débit restitué, débit réservé et cotes min/max de chaque ouvrage ? *(alimente E13, E14)*
+- **Q13** L'exploitation thermique publie-t-elle démarrages restants, démarrages planifiés, émissions et VLE du permis ? *(alimente E15, E16)*
+- **Q14** Quel outil publie l'écart par périmètre d'équilibre, le seuil interne et le prix de déséquilibre ? *(alimente E17)*
+- **Q15** L'outil de performance publie-t-il productible attendu, écart, tolérance et disponibilité contractuelle ? *(alimente E18, E19)*
+- **Q16** Où lire mode de réglage de tension, réglages de protection, préqualifications et accusés d'activation GRT ? *(alimente E9, E20, E21, E23)*
+- **Q17** La supervision OT publie-t-elle les événements qualifiés et l'échéance d'alerte précoce NIS2 ? *(alimente E22)*
 
 ## Profils Décider
 
@@ -21,7 +28,12 @@
 |---|---|---|
 | Dispatcher central | E1, E7 | Sûreté de conduite, Respect du programme, Charge opérateur |
 | Chef de quart pays | E5, E6 | Contrôlabilité, Délai de rétablissement, Sécurité des intervenants |
-| Responsable trading / services système | E2, E3 | Tenue des engagements, Exposition aux pénalités, Valeur de marché |
+| Responsable trading / services système | E2, E3, E9, E17, E23 | Tenue des engagements, Exposition aux pénalités, Valeur de marché |
 | Responsable conformité REMIT | E4 | Conformité, Exactitude de l'information, Rapidité |
 | Responsable données d'actifs / DSI | E8, E6 | Cohérence des référentiels, Effort de correction, Risque opérationnel |
+| Responsable actifs stockage | E3, E10, E11, E12 | Sécurité, Tenue des engagements, Durée de vie, Valeur de marché |
+| Exploitant hydraulique / thermique | E13, E14, E15, E16 | Conformité environnementale, Disponibilité, Coût d'exploitation, Engagements |
+| Responsable performance et contrats O&M | E18, E19 | Énergie produite, Respect des garanties, Coût d'intervention |
+| Responsable conformité raccordement | E20, E21, E23 | Conformité code de réseau, Sûreté système, Délai de mise en conformité |
+| Responsable cybersécurité OT | E22, E6 | Confinement, Continuité de conduite, Conformité NIS2 |
 | Direction (décisions stratégiques) | décisions stratégiques | Valeur, Risque, Capex/Opex, Conformité, Résilience |

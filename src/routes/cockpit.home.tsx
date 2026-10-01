@@ -47,7 +47,7 @@ function HomePage() {
   return (
     <div className="aura-home">
       <header className="aura-home-top aura-hero-band">
-        <div><span className="aura-hero-eyebrow">AURA ÉNERGIE · ESPACE DE TRAVAIL</span> <a href="/cockpit/energie" data-testid="home-energy-link" style={{ marginLeft: 8, fontWeight: 700 }}>Cockpit énergie →</a><h1 className="aura-hero-title">Bonjour, que faisons-nous <em className="aura-kw-hero">avancer</em> ?</h1></div>
+        <div><span className="aura-hero-eyebrow">AURA DÉCIDER · ESPACE DE TRAVAIL</span> <a href="/cockpit/energie" data-testid="home-energy-link" style={{ marginLeft: 8, fontWeight: 700 }}>Cockpit énergie →</a><h1 className="aura-hero-title">Bonjour, que faisons-nous <em className="aura-kw-hero">avancer</em> ?</h1></div>
         <div className="aura-home-trust aura-hero-sub" title="IA guidée · validation humaine"><ShieldCheck size={14} /></div>
       </header>
 

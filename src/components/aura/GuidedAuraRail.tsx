@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { audit, useAccess } from "../../lib/security/use-access";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
-import { BookOpen, ChevronLeft, ChevronRight, Home, LayoutDashboard, Menu, Settings2, ShieldCheck, Sparkles, Target, X } from "lucide-react";
+import { BookOpen, ChevronLeft, ChevronRight, Home, LayoutDashboard, Menu, Settings2, ShieldCheck, Sparkles, Target, X, Zap } from "lucide-react";
 import { AuraLogo } from "./AuraUI";
 import { loadSessions, saveSession, deleteSession, onSessionsChange, type AtelierSession } from "@/lib/v4/atelier-store";
 import { supabase } from "@/integrations/supabase/client";
@@ -95,7 +95,7 @@ export function GuidedAuraRail() {
     return () => window.removeEventListener("keydown", onKey);
   }, [drawer]);
   // Deux applications étanches : chacune a sa navigation et ne renvoie
-  // jamais vers une autre. Le Studio fait partie d'Aura Énergie. Les
+  // jamais vers une autre. Le Studio fait partie d'Aura Supply Chain (et du cockpit énergie). Les
   // pages partagées (compte, abonnement, administration) gardent la
   // navigation de l'application d'où l'on vient.
   const own = productOfPath(path);
@@ -108,15 +108,18 @@ export function GuidedAuraRail() {
   }, [own]);
   const product: Product = own ?? remembered;
 
+  const ctSection = typeof search?.section === "string" ? search.section : "cockpit";
   const productNav = useMemo(() => {
     if (product === "supply") {
       return {
-        label: "Aura Énergie",
-        home: "/cockpit/energie" as const,
+        label: "Aura Supply Chain",
+        home: "/cockpit/resilience" as const,
         icon: <ShieldCheck size={15}/>,
         links: [
           // Le cockpit est à double usage (Cockpit / Décision) : pas d'entrée Décider séparée.
-          { label: "Cockpit énergie", to: "/cockpit/energie" as const, active: path.includes("/energie"), icon: <LayoutDashboard size={11}/> },
+          { label: "Cockpit", to: "/cockpit/resilience" as const, search: { section: "cockpit" }, active: path.includes("/resilience") && ctSection !== "resilience", icon: <LayoutDashboard size={11}/> },
+          { label: "Exposition", to: "/cockpit/resilience" as const, search: { section: "resilience" }, active: path.includes("/resilience") && ctSection === "resilience", icon: <ShieldCheck size={11}/> },
+          { label: "Cockpit énergie", to: "/cockpit/energie" as const, active: path.includes("/energie"), icon: <Zap size={11}/> },
           { label: "Studio", to: "/cockpit/studio" as const, active: path.includes("/studio"), icon: <Settings2 size={11}/> },
         ],
       };
@@ -131,7 +134,7 @@ export function GuidedAuraRail() {
         { label: "Démonstrations", to: "/cockpit/demos" as const, active: path.includes("/demos"), icon: <Sparkles size={11}/> },
       ],
     };
-  }, [path, product]);
+  }, [ctSection, path, product]);
 
   const expanded = open || drawer;
   return <>

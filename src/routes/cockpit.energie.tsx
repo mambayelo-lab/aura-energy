@@ -53,6 +53,7 @@ function EnergyCockpit() {
                 Valeurs lues ({a.source}) : {Object.entries(a.valeursLues).filter(([, v]) => v !== null && v !== "").map(([k, v]) => `${k} = ${v}`).join(" · ")}
               </p>
               <p style={{ margin: "6px 0" }}><b>{a.decisionQuestion}</b></p>
+              {r.options && <p data-testid="energy-options" style={{ margin: "4px 0", fontSize: 13 }}>Options à comparer : {r.options.join(" · ")}{r.reference ? <> — <i>{r.reference}</i></> : null}</p>}
               <button type="button" className="aura-btn-primary" data-testid="energy-decide" onClick={() => decide(alertDecisionContext(a), `${a.ruleId} · ${a.label}`)}>Ouvrir dans Décider →</button>
             </article>
           );
