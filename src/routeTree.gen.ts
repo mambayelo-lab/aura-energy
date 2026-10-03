@@ -9,46 +9,36 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as CockpitRouteImport } from './routes/cockpit'
-import { Route as AuthRouteImport } from './routes/auth'
-import { Route as AuraRouteImport } from './routes/aura'
-import { Route as AnalysesPartageesRouteImport } from './routes/analyses-partagees'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AnalysesPartageesRouteImport } from './routes/analyses-partagees'
+import { Route as AuraRouteImport } from './routes/aura'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as CockpitRouteImport } from './routes/cockpit'
 import { Route as AuraIndexRouteImport } from './routes/aura.index'
-import { Route as CockpitUtilisateursRouteImport } from './routes/cockpit.utilisateurs'
-import { Route as CockpitStudioRouteImport } from './routes/cockpit.studio'
-import { Route as CockpitResilienceRouteImport } from './routes/cockpit.resilience'
-import { Route as CockpitHomeRouteImport } from './routes/cockpit.home'
-import { Route as CockpitEnergieRouteImport } from './routes/cockpit.energie'
-import { Route as CockpitDemosRouteImport } from './routes/cockpit.demos'
-import { Route as CockpitComptesRouteImport } from './routes/cockpit.comptes'
-import { Route as CockpitCasReferencesRouteImport } from './routes/cockpit.cas-references'
-import { Route as CockpitAtelierRouteImport } from './routes/cockpit.atelier'
-import { Route as CockpitAdminPlateformeRouteImport } from './routes/cockpit.admin-plateforme'
-import { Route as CockpitAbonnementRouteImport } from './routes/cockpit.abonnement'
-import { Route as AvisTokenRouteImport } from './routes/avis.$token'
-import { Route as AuraTarifsRouteImport } from './routes/aura.tarifs'
-import { Route as AuraSolutionsRouteImport } from './routes/aura.solutions'
-import { Route as AuraScienceRouteImport } from './routes/aura.science'
-import { Route as AuraPlateformeRouteImport } from './routes/aura.plateforme'
 import { Route as AuraMethodeRouteImport } from './routes/aura.methode'
-import { Route as ApiIntegrationCronRouteImport } from './routes/api/integration/cron'
+import { Route as AuraPlateformeRouteImport } from './routes/aura.plateforme'
+import { Route as AuraScienceRouteImport } from './routes/aura.science'
+import { Route as AuraSolutionsRouteImport } from './routes/aura.solutions'
+import { Route as AuraTarifsRouteImport } from './routes/aura.tarifs'
+import { Route as AvisTokenRouteImport } from './routes/avis.$token'
+import { Route as CockpitAbonnementRouteImport } from './routes/cockpit.abonnement'
+import { Route as CockpitAdminPlateformeRouteImport } from './routes/cockpit.admin-plateforme'
+import { Route as CockpitAtelierRouteImport } from './routes/cockpit.atelier'
+import { Route as CockpitCasReferencesRouteImport } from './routes/cockpit.cas-references'
+import { Route as CockpitComptesRouteImport } from './routes/cockpit.comptes'
+import { Route as CockpitDemosRouteImport } from './routes/cockpit.demos'
+import { Route as CockpitEnergieRouteImport } from './routes/cockpit.energie'
+import { Route as CockpitHomeRouteImport } from './routes/cockpit.home'
+import { Route as CockpitResilienceRouteImport } from './routes/cockpit.resilience'
+import { Route as CockpitStudioRouteImport } from './routes/cockpit.studio'
+import { Route as CockpitUtilisateursRouteImport } from './routes/cockpit.utilisateurs'
 import { Route as ApiAuraDialogueRouteImport } from './routes/api/aura/dialogue'
+import { Route as ApiIntegrationCronRouteImport } from './routes/api/integration/cron'
 import { Route as ApiPublicPaymentsWebhookRouteImport } from './routes/api/public/payments/webhook'
 
-const CockpitRoute = CockpitRouteImport.update({
-  id: '/cockpit',
-  path: '/cockpit',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthRoute = AuthRouteImport.update({
-  id: '/auth',
-  path: '/auth',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuraRoute = AuraRouteImport.update({
-  id: '/aura',
-  path: '/aura',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AnalysesPartageesRoute = AnalysesPartageesRouteImport.update({
@@ -56,9 +46,19 @@ const AnalysesPartageesRoute = AnalysesPartageesRouteImport.update({
   path: '/analyses-partagees',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const AuraRoute = AuraRouteImport.update({
+  id: '/aura',
+  path: '/aura',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CockpitRoute = CockpitRouteImport.update({
+  id: '/cockpit',
+  path: '/cockpit',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuraIndexRoute = AuraIndexRouteImport.update({
@@ -66,79 +66,9 @@ const AuraIndexRoute = AuraIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AuraRoute,
 } as any)
-const CockpitUtilisateursRoute = CockpitUtilisateursRouteImport.update({
-  id: '/utilisateurs',
-  path: '/utilisateurs',
-  getParentRoute: () => CockpitRoute,
-} as any)
-const CockpitStudioRoute = CockpitStudioRouteImport.update({
-  id: '/studio',
-  path: '/studio',
-  getParentRoute: () => CockpitRoute,
-} as any)
-const CockpitResilienceRoute = CockpitResilienceRouteImport.update({
-  id: '/resilience',
-  path: '/resilience',
-  getParentRoute: () => CockpitRoute,
-} as any)
-const CockpitHomeRoute = CockpitHomeRouteImport.update({
-  id: '/home',
-  path: '/home',
-  getParentRoute: () => CockpitRoute,
-} as any)
-const CockpitEnergieRoute = CockpitEnergieRouteImport.update({
-  id: '/energie',
-  path: '/energie',
-  getParentRoute: () => CockpitRoute,
-} as any)
-const CockpitDemosRoute = CockpitDemosRouteImport.update({
-  id: '/demos',
-  path: '/demos',
-  getParentRoute: () => CockpitRoute,
-} as any)
-const CockpitComptesRoute = CockpitComptesRouteImport.update({
-  id: '/comptes',
-  path: '/comptes',
-  getParentRoute: () => CockpitRoute,
-} as any)
-const CockpitCasReferencesRoute = CockpitCasReferencesRouteImport.update({
-  id: '/cas-references',
-  path: '/cas-references',
-  getParentRoute: () => CockpitRoute,
-} as any)
-const CockpitAtelierRoute = CockpitAtelierRouteImport.update({
-  id: '/atelier',
-  path: '/atelier',
-  getParentRoute: () => CockpitRoute,
-} as any)
-const CockpitAdminPlateformeRoute = CockpitAdminPlateformeRouteImport.update({
-  id: '/admin-plateforme',
-  path: '/admin-plateforme',
-  getParentRoute: () => CockpitRoute,
-} as any)
-const CockpitAbonnementRoute = CockpitAbonnementRouteImport.update({
-  id: '/abonnement',
-  path: '/abonnement',
-  getParentRoute: () => CockpitRoute,
-} as any)
-const AvisTokenRoute = AvisTokenRouteImport.update({
-  id: '/avis/$token',
-  path: '/avis/$token',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuraTarifsRoute = AuraTarifsRouteImport.update({
-  id: '/tarifs',
-  path: '/tarifs',
-  getParentRoute: () => AuraRoute,
-} as any)
-const AuraSolutionsRoute = AuraSolutionsRouteImport.update({
-  id: '/solutions',
-  path: '/solutions',
-  getParentRoute: () => AuraRoute,
-} as any)
-const AuraScienceRoute = AuraScienceRouteImport.update({
-  id: '/science',
-  path: '/science',
+const AuraMethodeRoute = AuraMethodeRouteImport.update({
+  id: '/methode',
+  path: '/methode',
   getParentRoute: () => AuraRoute,
 } as any)
 const AuraPlateformeRoute = AuraPlateformeRouteImport.update({
@@ -146,19 +76,89 @@ const AuraPlateformeRoute = AuraPlateformeRouteImport.update({
   path: '/plateforme',
   getParentRoute: () => AuraRoute,
 } as any)
-const AuraMethodeRoute = AuraMethodeRouteImport.update({
-  id: '/methode',
-  path: '/methode',
+const AuraScienceRoute = AuraScienceRouteImport.update({
+  id: '/science',
+  path: '/science',
   getParentRoute: () => AuraRoute,
 } as any)
-const ApiIntegrationCronRoute = ApiIntegrationCronRouteImport.update({
-  id: '/api/integration/cron',
-  path: '/api/integration/cron',
+const AuraSolutionsRoute = AuraSolutionsRouteImport.update({
+  id: '/solutions',
+  path: '/solutions',
+  getParentRoute: () => AuraRoute,
+} as any)
+const AuraTarifsRoute = AuraTarifsRouteImport.update({
+  id: '/tarifs',
+  path: '/tarifs',
+  getParentRoute: () => AuraRoute,
+} as any)
+const AvisTokenRoute = AvisTokenRouteImport.update({
+  id: '/avis/$token',
+  path: '/avis/$token',
   getParentRoute: () => rootRouteImport,
+} as any)
+const CockpitAbonnementRoute = CockpitAbonnementRouteImport.update({
+  id: '/abonnement',
+  path: '/abonnement',
+  getParentRoute: () => CockpitRoute,
+} as any)
+const CockpitAdminPlateformeRoute = CockpitAdminPlateformeRouteImport.update({
+  id: '/admin-plateforme',
+  path: '/admin-plateforme',
+  getParentRoute: () => CockpitRoute,
+} as any)
+const CockpitAtelierRoute = CockpitAtelierRouteImport.update({
+  id: '/atelier',
+  path: '/atelier',
+  getParentRoute: () => CockpitRoute,
+} as any)
+const CockpitCasReferencesRoute = CockpitCasReferencesRouteImport.update({
+  id: '/cas-references',
+  path: '/cas-references',
+  getParentRoute: () => CockpitRoute,
+} as any)
+const CockpitComptesRoute = CockpitComptesRouteImport.update({
+  id: '/comptes',
+  path: '/comptes',
+  getParentRoute: () => CockpitRoute,
+} as any)
+const CockpitDemosRoute = CockpitDemosRouteImport.update({
+  id: '/demos',
+  path: '/demos',
+  getParentRoute: () => CockpitRoute,
+} as any)
+const CockpitEnergieRoute = CockpitEnergieRouteImport.update({
+  id: '/energie',
+  path: '/energie',
+  getParentRoute: () => CockpitRoute,
+} as any)
+const CockpitHomeRoute = CockpitHomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => CockpitRoute,
+} as any)
+const CockpitResilienceRoute = CockpitResilienceRouteImport.update({
+  id: '/resilience',
+  path: '/resilience',
+  getParentRoute: () => CockpitRoute,
+} as any)
+const CockpitStudioRoute = CockpitStudioRouteImport.update({
+  id: '/studio',
+  path: '/studio',
+  getParentRoute: () => CockpitRoute,
+} as any)
+const CockpitUtilisateursRoute = CockpitUtilisateursRouteImport.update({
+  id: '/utilisateurs',
+  path: '/utilisateurs',
+  getParentRoute: () => CockpitRoute,
 } as any)
 const ApiAuraDialogueRoute = ApiAuraDialogueRouteImport.update({
   id: '/api/aura/dialogue',
   path: '/api/aura/dialogue',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiIntegrationCronRoute = ApiIntegrationCronRouteImport.update({
+  id: '/api/integration/cron',
+  path: '/api/integration/cron',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiPublicPaymentsWebhookRoute =
@@ -352,25 +352,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/cockpit': {
-      id: '/cockpit'
-      path: '/cockpit'
-      fullPath: '/cockpit'
-      preLoaderRoute: typeof CockpitRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/auth': {
-      id: '/auth'
-      path: '/auth'
-      fullPath: '/auth'
-      preLoaderRoute: typeof AuthRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/aura': {
-      id: '/aura'
-      path: '/aura'
-      fullPath: '/aura'
-      preLoaderRoute: typeof AuraRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/analyses-partagees': {
@@ -380,11 +366,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AnalysesPartageesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/aura': {
+      id: '/aura'
+      path: '/aura'
+      fullPath: '/aura'
+      preLoaderRoute: typeof AuraRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cockpit': {
+      id: '/cockpit'
+      path: '/cockpit'
+      fullPath: '/cockpit'
+      preLoaderRoute: typeof CockpitRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/aura/': {
@@ -394,109 +394,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuraIndexRouteImport
       parentRoute: typeof AuraRoute
     }
-    '/cockpit/utilisateurs': {
-      id: '/cockpit/utilisateurs'
-      path: '/utilisateurs'
-      fullPath: '/cockpit/utilisateurs'
-      preLoaderRoute: typeof CockpitUtilisateursRouteImport
-      parentRoute: typeof CockpitRoute
-    }
-    '/cockpit/studio': {
-      id: '/cockpit/studio'
-      path: '/studio'
-      fullPath: '/cockpit/studio'
-      preLoaderRoute: typeof CockpitStudioRouteImport
-      parentRoute: typeof CockpitRoute
-    }
-    '/cockpit/resilience': {
-      id: '/cockpit/resilience'
-      path: '/resilience'
-      fullPath: '/cockpit/resilience'
-      preLoaderRoute: typeof CockpitResilienceRouteImport
-      parentRoute: typeof CockpitRoute
-    }
-    '/cockpit/home': {
-      id: '/cockpit/home'
-      path: '/home'
-      fullPath: '/cockpit/home'
-      preLoaderRoute: typeof CockpitHomeRouteImport
-      parentRoute: typeof CockpitRoute
-    }
-    '/cockpit/energie': {
-      id: '/cockpit/energie'
-      path: '/energie'
-      fullPath: '/cockpit/energie'
-      preLoaderRoute: typeof CockpitEnergieRouteImport
-      parentRoute: typeof CockpitRoute
-    }
-    '/cockpit/demos': {
-      id: '/cockpit/demos'
-      path: '/demos'
-      fullPath: '/cockpit/demos'
-      preLoaderRoute: typeof CockpitDemosRouteImport
-      parentRoute: typeof CockpitRoute
-    }
-    '/cockpit/comptes': {
-      id: '/cockpit/comptes'
-      path: '/comptes'
-      fullPath: '/cockpit/comptes'
-      preLoaderRoute: typeof CockpitComptesRouteImport
-      parentRoute: typeof CockpitRoute
-    }
-    '/cockpit/cas-references': {
-      id: '/cockpit/cas-references'
-      path: '/cas-references'
-      fullPath: '/cockpit/cas-references'
-      preLoaderRoute: typeof CockpitCasReferencesRouteImport
-      parentRoute: typeof CockpitRoute
-    }
-    '/cockpit/atelier': {
-      id: '/cockpit/atelier'
-      path: '/atelier'
-      fullPath: '/cockpit/atelier'
-      preLoaderRoute: typeof CockpitAtelierRouteImport
-      parentRoute: typeof CockpitRoute
-    }
-    '/cockpit/admin-plateforme': {
-      id: '/cockpit/admin-plateforme'
-      path: '/admin-plateforme'
-      fullPath: '/cockpit/admin-plateforme'
-      preLoaderRoute: typeof CockpitAdminPlateformeRouteImport
-      parentRoute: typeof CockpitRoute
-    }
-    '/cockpit/abonnement': {
-      id: '/cockpit/abonnement'
-      path: '/abonnement'
-      fullPath: '/cockpit/abonnement'
-      preLoaderRoute: typeof CockpitAbonnementRouteImport
-      parentRoute: typeof CockpitRoute
-    }
-    '/avis/$token': {
-      id: '/avis/$token'
-      path: '/avis/$token'
-      fullPath: '/avis/$token'
-      preLoaderRoute: typeof AvisTokenRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/aura/tarifs': {
-      id: '/aura/tarifs'
-      path: '/tarifs'
-      fullPath: '/aura/tarifs'
-      preLoaderRoute: typeof AuraTarifsRouteImport
-      parentRoute: typeof AuraRoute
-    }
-    '/aura/solutions': {
-      id: '/aura/solutions'
-      path: '/solutions'
-      fullPath: '/aura/solutions'
-      preLoaderRoute: typeof AuraSolutionsRouteImport
-      parentRoute: typeof AuraRoute
-    }
-    '/aura/science': {
-      id: '/aura/science'
-      path: '/science'
-      fullPath: '/aura/science'
-      preLoaderRoute: typeof AuraScienceRouteImport
+    '/aura/methode': {
+      id: '/aura/methode'
+      path: '/methode'
+      fullPath: '/aura/methode'
+      preLoaderRoute: typeof AuraMethodeRouteImport
       parentRoute: typeof AuraRoute
     }
     '/aura/plateforme': {
@@ -506,25 +408,123 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuraPlateformeRouteImport
       parentRoute: typeof AuraRoute
     }
-    '/aura/methode': {
-      id: '/aura/methode'
-      path: '/methode'
-      fullPath: '/aura/methode'
-      preLoaderRoute: typeof AuraMethodeRouteImport
+    '/aura/science': {
+      id: '/aura/science'
+      path: '/science'
+      fullPath: '/aura/science'
+      preLoaderRoute: typeof AuraScienceRouteImport
       parentRoute: typeof AuraRoute
     }
-    '/api/integration/cron': {
-      id: '/api/integration/cron'
-      path: '/api/integration/cron'
-      fullPath: '/api/integration/cron'
-      preLoaderRoute: typeof ApiIntegrationCronRouteImport
+    '/aura/solutions': {
+      id: '/aura/solutions'
+      path: '/solutions'
+      fullPath: '/aura/solutions'
+      preLoaderRoute: typeof AuraSolutionsRouteImport
+      parentRoute: typeof AuraRoute
+    }
+    '/aura/tarifs': {
+      id: '/aura/tarifs'
+      path: '/tarifs'
+      fullPath: '/aura/tarifs'
+      preLoaderRoute: typeof AuraTarifsRouteImport
+      parentRoute: typeof AuraRoute
+    }
+    '/avis/$token': {
+      id: '/avis/$token'
+      path: '/avis/$token'
+      fullPath: '/avis/$token'
+      preLoaderRoute: typeof AvisTokenRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/cockpit/abonnement': {
+      id: '/cockpit/abonnement'
+      path: '/abonnement'
+      fullPath: '/cockpit/abonnement'
+      preLoaderRoute: typeof CockpitAbonnementRouteImport
+      parentRoute: typeof CockpitRoute
+    }
+    '/cockpit/admin-plateforme': {
+      id: '/cockpit/admin-plateforme'
+      path: '/admin-plateforme'
+      fullPath: '/cockpit/admin-plateforme'
+      preLoaderRoute: typeof CockpitAdminPlateformeRouteImport
+      parentRoute: typeof CockpitRoute
+    }
+    '/cockpit/atelier': {
+      id: '/cockpit/atelier'
+      path: '/atelier'
+      fullPath: '/cockpit/atelier'
+      preLoaderRoute: typeof CockpitAtelierRouteImport
+      parentRoute: typeof CockpitRoute
+    }
+    '/cockpit/cas-references': {
+      id: '/cockpit/cas-references'
+      path: '/cas-references'
+      fullPath: '/cockpit/cas-references'
+      preLoaderRoute: typeof CockpitCasReferencesRouteImport
+      parentRoute: typeof CockpitRoute
+    }
+    '/cockpit/comptes': {
+      id: '/cockpit/comptes'
+      path: '/comptes'
+      fullPath: '/cockpit/comptes'
+      preLoaderRoute: typeof CockpitComptesRouteImport
+      parentRoute: typeof CockpitRoute
+    }
+    '/cockpit/demos': {
+      id: '/cockpit/demos'
+      path: '/demos'
+      fullPath: '/cockpit/demos'
+      preLoaderRoute: typeof CockpitDemosRouteImport
+      parentRoute: typeof CockpitRoute
+    }
+    '/cockpit/energie': {
+      id: '/cockpit/energie'
+      path: '/energie'
+      fullPath: '/cockpit/energie'
+      preLoaderRoute: typeof CockpitEnergieRouteImport
+      parentRoute: typeof CockpitRoute
+    }
+    '/cockpit/home': {
+      id: '/cockpit/home'
+      path: '/home'
+      fullPath: '/cockpit/home'
+      preLoaderRoute: typeof CockpitHomeRouteImport
+      parentRoute: typeof CockpitRoute
+    }
+    '/cockpit/resilience': {
+      id: '/cockpit/resilience'
+      path: '/resilience'
+      fullPath: '/cockpit/resilience'
+      preLoaderRoute: typeof CockpitResilienceRouteImport
+      parentRoute: typeof CockpitRoute
+    }
+    '/cockpit/studio': {
+      id: '/cockpit/studio'
+      path: '/studio'
+      fullPath: '/cockpit/studio'
+      preLoaderRoute: typeof CockpitStudioRouteImport
+      parentRoute: typeof CockpitRoute
+    }
+    '/cockpit/utilisateurs': {
+      id: '/cockpit/utilisateurs'
+      path: '/utilisateurs'
+      fullPath: '/cockpit/utilisateurs'
+      preLoaderRoute: typeof CockpitUtilisateursRouteImport
+      parentRoute: typeof CockpitRoute
     }
     '/api/aura/dialogue': {
       id: '/api/aura/dialogue'
       path: '/api/aura/dialogue'
       fullPath: '/api/aura/dialogue'
       preLoaderRoute: typeof ApiAuraDialogueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/integration/cron': {
+      id: '/api/integration/cron'
+      path: '/api/integration/cron'
+      fullPath: '/api/integration/cron'
+      preLoaderRoute: typeof ApiIntegrationCronRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/public/payments/webhook': {
