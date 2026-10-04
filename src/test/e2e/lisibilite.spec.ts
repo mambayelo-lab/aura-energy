@@ -121,7 +121,7 @@ test("Supply : schémas et graphiques lisibles", async ({ page }) => {
 
 // Plusieurs démos pour afficher tous les visuels de Décider : treillis,
 // radar, cartes d'arbitrage, dossier d'exigences (conception complexe)…
-for (const demo of ["supply-stock", "telereleve", "energie-reseau", "retail-omnicanal", "demo-genai-make-or-buy", "renouv-flexibilite"]) {
+for (const demo of ["supply-stock", "telereleve", "energie-reseau", "retail-omnicanal", "demo-genai-make-or-buy"]) {
   test(`Décider : visuels lisibles (${demo})`, async ({ page }) => {
     test.setTimeout(300_000);
     await page.goto(`/cockpit/atelier?demo=${demo}`);

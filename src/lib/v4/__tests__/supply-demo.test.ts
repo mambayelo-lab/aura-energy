@@ -24,7 +24,7 @@ describe("démo Supply Maison Lucie", () => {
 
   it("enchaîne modèle, mappings au-dessus du seuil et évaluation des règles", async () => {
     const seen: string[] = [];
-    const r = await runSupplyDemo(blankVocab(), (id, state) => seen.push(`${id}:${state}`), async v => ({ ok: true, vocab: v }));
+    const r = await runSupplyDemo(blankVocab(), (id, state) => seen.push(`${id}:${state}`), async v => ({ ok: true, vocab: v }), async () => ({ ok: false, error: "hors ligne (test)" }));
     expect(r.ok).toBe(true);
     for (const s of SUPPLY_DEMO_STEPS) expect(seen).toContain(`${s.id}:done`);
     if (r.ok) expect((r.vocab.entities ?? []).length).toBeGreaterThanOrEqual(6);

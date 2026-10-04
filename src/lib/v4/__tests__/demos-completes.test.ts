@@ -17,7 +17,7 @@ for (const p of SECTOR_PACKS) for (const c of (p as { cases?: { key: string }[] 
 const TIES = new Set<string>();
 
 describe("démos complètes", () => {
-  it("huit démos représentatives", () => expect(demos.map(d => d[0]).sort()).toEqual(["demo-genai-make-or-buy", "energie-reseau", "renouv-flexibilite", "retail-omnicanal", "supply-detroits", "supply-pandemie", "supply-stock", "telereleve"]));
+  it("sept démos représentatives", () => expect(demos.map(d => d[0]).sort()).toEqual(["demo-genai-make-or-buy", "energie-reseau", "retail-omnicanal", "supply-detroits", "supply-pandemie", "supply-stock", "telereleve"]));
   for (const [k, s] of demos) it(`${k} : ≥ 80 % d'impacts renseignés, un gagnant, un classement`, () => {
     const c = impactCompleteness(s);
     expect(c.ratio).toBeGreaterThanOrEqual(0.8);

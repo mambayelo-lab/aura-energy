@@ -35,7 +35,7 @@ test("Studio reste ancré dans SCRA et utilise Maison Lucie uniquement", async (
   await settle(page);
 
   await expect(page.getByRole("link", { name: "Aura Supply Chain" })).toBeVisible();
-  await expect(page.getByRole("link", { name: "Cockpit" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Cockpit", exact: true })).toBeVisible();
   await expect(page.getByRole("link", { name: "Décider" })).toHaveCount(0);
   await expect(page.getByRole("link", { name: "Studio" })).toBeVisible();
 
